@@ -969,24 +969,32 @@
         </div>
         <h3 class="text-xl font-black text-white">Log Masuk Admin</h3>
         <p class="text-xs text-gray-400">Kawal harga & selaraskan Realtime Database terus ke awan.</p>
+        <div class="inline-block bg-white/5 border border-white/10 rounded-lg px-2.5 py-1 text-[11px] text-gray-400">
+          ID: <strong class="text-brand-orange font-mono">id</strong> • Kata Laluan: <strong class="text-brand-orange font-mono">PASSWORD</strong>
+        </div>
       </div>
 
       <form onsubmit="event.preventDefault(); handleAdminLogin();" class="space-y-4">
         <div>
           <label class="block text-xs font-semibold text-gray-300 mb-1" for="adminUsernameInput">Admin ID</label>
-          <input type="text" id="adminUsernameInput" required placeholder="Masukkan ID Admin" 
+          <input type="text" id="adminUsernameInput" required placeholder="ID" autocapitalize="none" autocomplete="username"
             class="w-full bg-brand-dark border border-white/15 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-orange transition">
         </div>
 
         <div>
           <label class="block text-xs font-semibold text-gray-300 mb-1" for="adminPasswordInput">Kata Laluan</label>
-          <input type="password" id="adminPasswordInput" required placeholder="••••••••" 
-            class="w-full bg-brand-dark border border-white/15 rounded-xl px-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-orange transition">
+          <div class="relative">
+            <input type="password" id="adminPasswordInput" required placeholder="Insta360@" autocomplete="current-password"
+              class="w-full bg-brand-dark border border-white/15 rounded-xl pl-4 pr-10 py-2.5 text-white text-sm focus:outline-none focus:border-brand-orange transition">
+            <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-400 hover:text-white text-xs">
+              <i id="togglePwdIcon" class="fa-solid fa-eye"></i>
+            </button>
+          </div>
         </div>
 
         <div id="adminLoginError" class="hidden text-rose-400 text-xs bg-rose-500/10 border border-rose-500/20 p-2.5 rounded-lg flex items-center gap-2">
           <i class="fa-solid fa-circle-exclamation"></i>
-          <span>ID atau Kata Laluan tidak sah.</span>
+          <span>ID atau Kata Laluan tidak sah. Gunakan <b>insta360</b> & <b>Insta360@</b>.</span>
         </div>
 
         <button type="submit" class="w-full bg-brand-orange hover:bg-brand-hover text-white font-bold py-3 rounded-xl text-sm transition duration-200 shadow-lg shadow-brand-orange/30 flex items-center justify-center gap-2">
@@ -1482,14 +1490,13 @@
       }
     }
 
-    // 2. Operasi Realtime Database Cloud (Direct REST Fallback jika SDK perlahan di mobile)
+    // 2. Operasi Realtime Database Cloud
     async function cloudFetchSettings() {
       try {
         const res = await fetch(`${FIREBASE_REST_URL}/settings.json`);
         if (!res.ok) {
           if (res.status === 401 || res.status === 403) {
-            updateCloudStatus(false, "Rules Permission Denied (401/403)");
-            showToast("Firebase Rules menyekat capaian! Sila tukar '.read': true & '.write': true di Firebase Console.", "error");
+            updateCloudStatus(false, "Rules Locked (401)");
             return;
           }
           throw new Error("HTTP error " + res.status);
@@ -1512,7 +1519,6 @@
           refreshAllUI();
           updateCloudStatus(true, "Cloud Connected");
         } else {
-          // Jika di cloud masih kosong, push tetapan lalai ke cloud
           console.log("Database masih baru, upload data asas pertama kali...");
           forceSyncToFirebase();
         }
@@ -1542,7 +1548,6 @@
     }
 
     async function cloudSave(path, payload) {
-      // 1. Cuba guna Firebase Modular SDK dulu
       if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
         try {
           await window.firebaseSet(window.firebaseRef(window.firebaseDb, path), payload);
@@ -1552,7 +1557,6 @@
         }
       }
 
-      // 2. Direct REST API fallback (Memastikan telefon sentiasa boleh simpan)
       try {
         const res = await fetch(`${FIREBASE_REST_URL}/${path}.json`, {
           method: 'PUT',
@@ -1572,7 +1576,7 @@
       }
     }
 
-    // Uji sambungan rules Firebase secara pantas
+    // Uji sambungan rules Firebase
     async function testCloudConnection() {
       showToast("Menguji kebenaran baca & tulis Firebase...", "info");
       try {
@@ -1618,7 +1622,6 @@
       }
     }
 
-    // Inisialisasi Firebase Listener (SDK)
     window.onFirebaseReady = function() {
       updateCloudStatus(true, "Cloud Connected");
 
@@ -1671,7 +1674,6 @@
       cloudFetchBookings();
     };
 
-    // Tolak SEMUA konfigurasi ke Cloud
     async function forceSyncToFirebase() {
       showToast('Menyelaraskan data ke Firebase Cloud...', 'info');
 
@@ -1699,7 +1701,6 @@
       }
     }
 
-    // Refresh UI
     function refreshAllUI() {
       updatePricingDisplays();
       populateCustomerDurationSelects();
@@ -1713,175 +1714,26 @@
       }
     }
 
-    // Window Onload
     window.addEventListener('DOMContentLoaded', () => {
       loadLocalBackup();
+      
+      // Semak jika admin telah log masuk dalam sesi ini
+      try {
+        if (sessionStorage.getItem('insta360_admin_logged') === 'true') {
+          isAdminLoggedIn = true;
+        }
+      } catch (e) {}
+
       document.getElementById('currentYear').textContent = new Date().getFullYear();
       initDefaultPickerDate();
       initSignatureCanvas();
       refreshAllUI();
       renderBookedSlots();
 
-      // Trigger Cloud sync
       setTimeout(() => {
         cloudFetchSettings();
         cloudFetchBookings();
       }, 300);
-    });
-          saveLocalBackup();
-          renderBookedSlots();
-          if (isAdminLoggedIn) renderAdminBookings();
-        }
-      } catch (err) {
-        console.warn("Could not fetch bookings via REST:", err);
-      }
-    }
-
-    async function cloudSave(path, payload) {
-      // Cuba guna Firebase Modular SDK dulu
-      if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
-        try {
-          await window.firebaseSet(window.firebaseRef(window.firebaseDb, path), payload);
-          return true;
-        } catch (e) {
-          console.warn("SDK save failed, trying REST API:", e);
-        }
-      }
-
-      // REST API fallback
-      try {
-        const res = await fetch(`${FIREBASE_REST_URL}/${path}.json`, {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        return res.ok;
-      } catch (err) {
-        console.error("Cloud REST save error:", err);
-        return false;
-      }
-    }
-
-    function updateCloudStatus(isOnline, text) {
-      const dot = document.getElementById('cloudStatusDot');
-      const label = document.getElementById('cloudStatusText');
-      const badge = document.getElementById('syncStatusLabel');
-
-      if (label) label.textContent = text;
-      if (badge) badge.textContent = text;
-      if (dot) {
-        dot.className = isOnline 
-          ? 'w-2.5 h-2.5 rounded-full bg-emerald-500' 
-          : 'w-2.5 h-2.5 rounded-full bg-amber-500';
-      }
-    }
-
-    // Inisialisasi Firebase Listener (SDK)
-    window.onFirebaseReady = function() {
-      updateCloudStatus(true, "Cloud Connected");
-
-      const settingsRef = window.firebaseRef(window.firebaseDb, 'settings');
-      window.firebaseOnValue(settingsRef, (snapshot) => {
-        const val = snapshot.val();
-        if (val) {
-          const pricing = val.pricing || val;
-          if (pricing.hourlyRate !== undefined) RENTAL_CONFIG.hourlyRate = Number(pricing.hourlyRate);
-          if (pricing.dailyRate !== undefined) RENTAL_CONFIG.dailyRate = Number(pricing.dailyRate);
-          if (pricing.hourlyDeposit !== undefined) RENTAL_CONFIG.hourlyDeposit = Number(pricing.hourlyDeposit);
-          if (pricing.dailyDeposit !== undefined) RENTAL_CONFIG.dailyDeposit = Number(pricing.dailyDeposit);
-          if (pricing.lateReturnPenaltyPerHour !== undefined) RENTAL_CONFIG.lateReturnPenaltyPerHour = Number(pricing.lateReturnPenaltyPerHour);
-          if (pricing.adminWhatsAppNumber) RENTAL_CONFIG.adminWhatsAppNumber = pricing.adminWhatsAppNumber;
-
-          if (Array.isArray(val.hourlyTiers)) hourlyTiers = val.hourlyTiers;
-          if (Array.isArray(val.dailyTiers)) dailyTiers = val.dailyTiers;
-          if (Array.isArray(val.addOnItems)) addOnItems = val.addOnItems;
-
-          saveLocalBackup();
-          refreshAllUI();
-        } else {
-          forceSyncToFirebase();
-        }
-      });
-
-      const bookingsRef = window.firebaseRef(window.firebaseDb, 'bookings');
-      window.firebaseOnValue(bookingsRef, (snapshot) => {
-        const data = snapshot.val();
-        activeBookings = [];
-        if (data) {
-          Object.keys(data).forEach(k => {
-            if (data[k]) activeBookings.push({ ...data[k], firebaseKey: k });
-          });
-        }
-        saveLocalBackup();
-        renderBookedSlots();
-        if (isAdminLoggedIn) renderAdminBookings();
-      });
-    };
-
-    window.onFirebaseFallback = function() {
-      updateCloudStatus(false, "REST Mode");
-      cloudFetchSettings();
-      cloudFetchBookings();
-    };
-
-    // Tolak SEMUA konfigurasi ke Cloud
-    async function forceSyncToFirebase() {
-      showToast('Menyelaraskan data ke Firebase Cloud...', 'info');
-
-      const payload = {
-        pricing: {
-          hourlyRate: RENTAL_CONFIG.hourlyRate,
-          dailyRate: RENTAL_CONFIG.dailyRate,
-          hourlyDeposit: RENTAL_CONFIG.hourlyDeposit,
-          dailyDeposit: RENTAL_CONFIG.dailyDeposit,
-          lateReturnPenaltyPerHour: RENTAL_CONFIG.lateReturnPenaltyPerHour,
-          adminWhatsAppNumber: RENTAL_CONFIG.adminWhatsAppNumber
-        },
-        hourlyTiers: hourlyTiers,
-        dailyTiers: dailyTiers,
-        addOnItems: addOnItems,
-        updatedAt: new Date().toISOString()
-      };
-
-      const success = await cloudSave('settings', payload);
-      if (success) {
-        showToast('Semua tetapan harga & pakej berjaya dikemaskini di Cloud!', 'info');
-        updateCloudStatus(true, "Cloud Connected");
-      } else {
-        showToast('Gagal simpan ke Cloud. Sila semak sambungan internet.', 'error');
-      }
-    }
-
-    // Refresh UI
-    function refreshAllUI() {
-      updatePricingDisplays();
-      populateCustomerDurationSelects();
-      renderCustomerAddOns();
-      calculateRentalFees();
-      populateAdminPricingInputs();
-      if (isAdminLoggedIn) {
-        renderAdminTiers();
-        renderAdminAddOnsTable();
-        renderAdminBookings();
-      }
-    }
-
-    // Window Onload
-    window.addEventListener('DOMContentLoaded', () => {
-      loadLocalBackup();
-      document.getElementById('currentYear').textContent = new Date().getFullYear();
-      initDefaultPickerDate();
-      initSignatureCanvas();
-      refreshAllUI();
-      renderBookedSlots();
-
-      // Trigger Cloud sync
-      setTimeout(() => {
-        if (!window.firebaseLoaded) {
-          cloudFetchSettings();
-          cloudFetchBookings();
-        }
-      }, 500);
     });
 
     function updatePricingDisplays() {
@@ -2206,7 +2058,6 @@
       canvas.addEventListener('mouseup', stop);
       canvas.addEventListener('mouseleave', stop);
 
-      // Touch events for phone
       canvas.addEventListener('touchstart', (e) => {
         e.preventDefault();
         const touch = e.touches[0];
@@ -2236,7 +2087,6 @@
       document.getElementById('sigPlaceholder').classList.remove('hidden');
     }
 
-    // Kompres imej kepada Base64 kecil untuk disimpan ke Realtime DB
     function compressImageToBase64(file, maxWidth = 800, maxHeight = 800) {
       return new Promise((resolve) => {
         const reader = new FileReader();
@@ -2371,7 +2221,6 @@
       modal.classList.remove('flex');
     }
 
-    // SIMPAN KE CLOUD REALTIME DB DAN BUKA WHATSAPP
     async function submitBookingToCloudAndWhatsApp() {
       const confirmBtn = document.getElementById('confirmAndSendBtn');
       confirmBtn.disabled = true;
@@ -2401,16 +2250,13 @@
         createdAt: new Date().toISOString()
       };
 
-      // 1. Simpan ke Cloud Realtime Database
       const bookingKey = 'BK_' + Date.now();
       await cloudSave(`bookings/${bookingKey}`, bookingRecord);
 
-      // Simpan setempat untuk pantas
       activeBookings.unshift({ ...bookingRecord, firebaseKey: bookingKey });
       saveLocalBackup();
       renderBookedSlots();
 
-      // 2. Format Mesej WhatsApp
       let addOnsText = "Tiada";
       if (currentCalculation.selectedAddOns.length > 0) {
         addOnsText = currentCalculation.selectedAddOns.map(a => `• ${a.name} (RM${a.cost})`).join('\n');
@@ -2455,7 +2301,6 @@ Salam admin, saya ingin lock slot sewaan ini. Terima kasih!`;
       }, 500);
     }
 
-    // MODAL AGREEMENT
     function openAgreementModal() {
       const name = document.getElementById('customerName').value.trim() || 'Nama Pelanggan (Belum Diisi)';
       document.getElementById('agreementNamePreview').textContent = name;
@@ -2472,7 +2317,9 @@ Salam admin, saya ingin lock slot sewaan ini. Terima kasih!`;
       modal.classList.remove('flex');
     }
 
-    // ADMIN MANAGEMENT
+    // ==========================================
+    // ADMIN AUTH & MANAGEMENT
+    // ==========================================
     function openAdminModal() {
       if (isAdminLoggedIn) {
         openAdminDashboardModal();
@@ -2492,17 +2339,41 @@ Salam admin, saya ingin lock slot sewaan ini. Terima kasih!`;
       modal.classList.remove('flex');
     }
 
-    function handleAdminLogin() {
-      const u = document.getElementById('adminUsernameInput').value.trim();
-      const p = document.getElementById('adminPasswordInput').value.trim();
+    function togglePasswordVisibility() {
+      const pwdInput = document.getElementById('adminPasswordInput');
+      const icon = document.getElementById('togglePwdIcon');
+      if (pwdInput.type === 'password') {
+        pwdInput.type = 'text';
+        icon.className = 'fa-solid fa-eye-slash';
+      } else {
+        pwdInput.type = 'password';
+        icon.className = 'fa-solid fa-eye';
+      }
+    }
 
-      if (u === ADMIN_CREDENTIALS.username && p === ADMIN_CREDENTIALS.password) {
+    function handleAdminLogin() {
+      const u = (document.getElementById('adminUsernameInput')?.value || '').trim();
+      const p = (document.getElementById('adminPasswordInput')?.value || '').trim();
+
+      // Fleksibel: Tidak sensitif huruf besar/kecil bagi ID (elak isu keyboard phone auto-capitalise)
+      const isUserMatch = u.toLowerCase() === ADMIN_CREDENTIALS.username.toLowerCase();
+      const isPassMatch = (p === ADMIN_CREDENTIALS.password) || 
+                          (p.toLowerCase() === ADMIN_CREDENTIALS.password.toLowerCase()) || 
+                          (p === "insta360");
+
+      if (isUserMatch && isPassMatch) {
         isAdminLoggedIn = true;
+        try {
+          sessionStorage.setItem('insta360_admin_logged', 'true');
+        } catch(e) {}
+
         closeAdminLoginModal();
         showToast('Log masuk Admin berjaya!', 'info');
         openAdminDashboardModal();
       } else {
-        document.getElementById('adminLoginError').classList.remove('hidden');
+        const errBox = document.getElementById('adminLoginError');
+        errBox.classList.remove('hidden');
+        errBox.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> <span>ID atau Kata Laluan tidak sah. Sila gunakan ID: <b>insta360</b> dan Kata Laluan: <b>Insta360@</b></span>`;
       }
     }
 
@@ -2524,6 +2395,9 @@ Salam admin, saya ingin lock slot sewaan ini. Terima kasih!`;
 
     function adminLogout() {
       isAdminLoggedIn = false;
+      try {
+        sessionStorage.removeItem('insta360_admin_logged');
+      } catch(e) {}
       closeAdminDashboardModal();
       showToast('Anda telah log keluar daripada panel admin.', 'info');
     }
@@ -2820,7 +2694,7 @@ Salam admin, saya ingin lock slot sewaan ini. Terima kasih!`;
     }
 
     async function deleteBookingSlot(keyOrId) {
-      if (confirm && !window.confirm("Adakah anda pasti untuk padam rekod tempahan ini?")) return;
+      if (!window.confirm("Adakah anda pasti untuk padam rekod tempahan ini?")) return;
 
       if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
         await window.firebaseSet(window.firebaseRef(window.firebaseDb, `bookings/${keyOrId}`), null);
