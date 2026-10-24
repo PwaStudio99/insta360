@@ -1,0 +1,2779 @@
+
+<!DOCTYPE html>
+<html lang="ms" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Sewa Insta360 X4 Air | Rakaman 8K 360° Sinematik & Travel Rental</title>
+  <meta name="description" content="Servis sewaan rasmi Insta360 X4 Air untuk aktiviti travel, hiking, motovlog dan content creation. Harga berpatutan, pakej jam & harian, self-pickup pantas.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20width=%22100%22%20height=%22100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23ff5500%22/><circle cx=%2250%22 cy=%2250%22 r=%2220%22 fill=%22%230f172a%22/></svg>">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#FF5E00',
+              hover: '#E05300',
+              dark: '#0A0C10',
+              panel: '#12161F',
+              border: '#232A38',
+              muted: '#8E9AA8'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Font & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Firebase App & Database Scripts -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
+    import { getDatabase, ref, set, get, onValue, push } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBjycyfDGXkYyJyVpB8zNFfCFJTd_fdCSs",
+      authDomain: "insta360-e974b.firebaseapp.com",
+      databaseURL: "https://insta360-e974b-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "insta360-e974b",
+      storageBucket: "insta360-e974b.firebasestorage.app",
+      messagingSenderId: "27458834600",
+      appId: "1:27458834600:web:4601e0309366564714329d",
+      measurementId: "G-551R1P5GE0"
+    };
+
+    // Inisialisasi Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getDatabase(app);
+
+    // Dedahkan rujukan Firebase kepada skrip global
+    window.firebaseApp = app;
+    window.firebaseDb = db;
+    window.firebaseRef = ref;
+    window.firebaseSet = set;
+    window.firebaseGet = get;
+    window.firebaseOnValue = onValue;
+    window.firebasePush = push;
+
+    if (window.initFirebaseSync) {
+      window.initFirebaseSync();
+    }
+  </script>
+
+  <style>
+    /* Custom Styling for Action Cam Theme */
+    body {
+      background-color: #0A0C10;
+      color: #E2E8F0;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    .hero-glow {
+      background: radial-gradient(circle at 50% 30%, rgba(255, 94, 0, 0.18) 0%, rgba(10, 12, 16, 0) 70%);
+    }
+    .glass-card {
+      background: rgba(18, 22, 31, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(255, 94, 0, 0.35);
+    }
+    .neon-border {
+      box-shadow: 0 0 25px rgba(255, 94, 0, 0.25);
+    }
+    /* Printable Agreement Style */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printableAgreement, #printableAgreement * {
+        visibility: visible;
+      }
+      #printableAgreement {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: white !important;
+        color: black !important;
+        padding: 20px;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="selection:bg-brand-orange selection:text-white pb-24 md:pb-0">
+
+  <!-- ========================================== -->
+  <!-- NAVBAR                                     -->
+  <!-- ========================================== -->
+  <nav class="fixed top-0 left-0 w-full z-40 bg-brand-dark/90 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-orange to-amber-500 flex items-center justify-center text-white shadow-lg shadow-brand-orange/30">
+          <i class="fa-solid fa-camera-rotate text-lg"></i>
+        </div>
+        <div>
+          <span class="text-xl font-extrabold tracking-tight text-white">INSTA360 <span class="text-brand-orange">X4 AIR</span></span>
+          <span class="hidden sm:inline-block text-xs bg-white/10 text-brand-orange px-2 py-0.5 rounded-full ml-2 font-semibold">RENTAL MY</span>
+        </div>
+      </div>
+
+      <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+        <a href="#kelebihan" class="hover:text-brand-orange transition">Kelebihan</a>
+        <a href="#pakej" class="hover:text-brand-orange transition">Pakej & Harga</a>
+        <a href="#cara-booking" class="hover:text-brand-orange transition">Cara Sewa</a>
+        <a href="#syarat" class="hover:text-brand-orange transition">Syarat & Polisi</a>
+        <a href="#faq" class="hover:text-brand-orange transition">FAQ</a>
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <!-- Admin Portal Button (Top Right) -->
+        <button type="button" onclick="openAdminModal()" class="bg-white/10 hover:bg-white/20 text-gray-300 hover:text-white text-xs font-semibold px-3 py-2.5 rounded-xl transition duration-200 border border-white/10 flex items-center gap-1.5 shadow-sm" title="Portal Pengurusan Admin">
+          <i class="fa-solid fa-lock text-brand-orange"></i>
+          <span class="hidden sm:inline">Admin</span>
+        </button>
+
+        <a href="#booking-section" class="bg-brand-orange hover:bg-brand-hover text-white text-sm font-semibold px-4 sm:px-5 py-2.5 rounded-xl transition duration-200 shadow-md shadow-brand-orange/30 flex items-center gap-2">
+          <span>Book Sekarang</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================== -->
+  <!-- HERO SECTION                               -->
+  <!-- ========================================== -->
+  <section class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 hero-glow overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Headline -->
+        <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-orange/10 border border-brand-orange/30 text-brand-orange text-xs sm:text-sm font-semibold">
+            <span class="w-2 h-2 rounded-full bg-brand-orange animate-pulse"></span>
+            Stok Terhad • Servis Sewaan Rasmi & Selamat
+          </div>
+          <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight">
+            Rakam Detik Epik 360° Tanpa Perlu Beli Kamera Mahal.
+          </h1>
+          <p class="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+            Sewa <strong class="text-white font-semibold">Insta360 X4 Air</strong> dengan kualiti resolusi 8K tajam, Invisible Selfie Stick, dan FlowState Stabilization. Sesuai untuk holiday, konvoi ride, hiking, dan festival.
+          </p>
+
+          <!-- Pricing Pill & Highlights -->
+          <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+            <div class="bg-brand-panel border border-brand-border px-5 py-3 rounded-2xl flex items-center gap-3">
+              <i class="fa-solid fa-bolt text-brand-orange text-xl"></i>
+              <div class="text-left">
+                <p class="text-xs text-gray-400 uppercase font-medium tracking-wider">Mulai Dari</p>
+                <p class="text-xl font-bold text-white"><span id="heroHourlyPriceDisplay">RM20</span> <span class="text-xs text-gray-400 font-normal">/jam</span> <span class="text-xs text-brand-orange">| RM80/hari</span></p>
+              </div>
+            </div>
+
+            <div class="bg-brand-panel border border-brand-border px-5 py-3 rounded-2xl flex items-center gap-3">
+              <i class="fa-solid fa-location-dot text-brand-orange text-xl"></i>
+              <div class="text-left">
+                <p class="text-xs text-gray-400 uppercase font-medium tracking-wider">Kaedah Ambil</p>
+                <p class="text-base font-bold text-white">Self-Pickup Sahaja</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a href="#booking-section" class="w-full sm:w-auto text-center bg-brand-orange hover:bg-brand-hover text-white font-bold px-8 py-4 rounded-xl transition duration-200 shadow-xl shadow-brand-orange/30 text-base">
+              Tempah Slot Anda Sekarang
+            </a>
+            <a href="#semak-tarikh" class="w-full sm:w-auto text-center bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold px-6 py-4 rounded-xl transition text-base">
+              Semak Kekosongan Tarikh
+            </a>
+          </div>
+
+          <!-- Micro Trust Badges -->
+          <div class="pt-6 border-t border-white/10 grid grid-cols-3 gap-4 text-center lg:text-left">
+            <div>
+              <p class="text-white font-bold text-lg">100%</p>
+              <p class="text-xs text-gray-400">Unit Original & Bersih</p>
+            </div>
+            <div>
+              <p class="text-white font-bold text-lg">Aksesori</p>
+              <p class="text-xs text-gray-400">Termasuk Tongkat & Beg</p>
+            </div>
+            <div>
+              <p class="text-white font-bold text-lg">Pantas</p>
+              <p class="text-xs text-gray-400">Semakan Booking Segera</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Visual Mockup (Insta360 X4 Air 3D Image Showcase) -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-md">
+            <div class="absolute -inset-1 bg-gradient-to-r from-brand-orange to-purple-600 rounded-3xl blur-2xl opacity-30 animate-pulse"></div>
+            
+            <div class="relative glass-card rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl">
+              <!-- Visual Action Cam Graphic with 3D Image Upload -->
+              <div class="relative bg-gradient-to-b from-gray-900 to-black rounded-2xl p-6 border border-white/10 flex flex-col items-center justify-center min-h-[300px] overflow-hidden group">
+                
+                <!-- 3D Insta360 X4 Air Real Asset -->
+                <div class="relative py-2 flex items-center justify-center">
+                  <img src="229824.jpg" alt="Insta360 X4 Air 3D Dual Angle" class="max-h-72 w-auto object-contain drop-shadow-[0_20px_35px_rgba(255,94,0,0.28)] hover:scale-105 transition-transform duration-500 rounded-2xl">
+                </div>
+
+                <div class="mt-4 text-center">
+                  <span class="inline-block px-3 py-1 bg-brand-orange/20 text-brand-orange rounded-full text-xs font-bold uppercase tracking-wider mb-1">Pakej Lengkap Sewaan</span>
+                  <p class="text-sm font-semibold text-white">Insta360 X4 Air + Invisible Stick + 2x Bateri + 128GB MicroSD High-Speed</p>
+                </div>
+              </div>
+
+              <!-- Quick Status Banner -->
+              <div class="mt-5 p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between text-xs">
+                <span class="text-gray-300 flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                  Status Unit Hari Ini:
+                </span>
+                <span class="text-emerald-400 font-bold tracking-wide uppercase" id="currentUnitStatusBadge">Sedia Ditempah</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- KELEBIHAN KAMERA                           -->
+  <!-- ========================================== -->
+  <section id="kelebihan" class="py-20 bg-brand-dark border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs sm:text-sm font-bold text-brand-orange uppercase tracking-widest">Kenapa Insta360 X4 Air?</h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Kamera Aksi Terbaik Untuk Segala Misi Anda</h3>
+        <p class="text-gray-400 mt-4 text-sm sm:text-base">Tak perlu pening pusing sudut kamera. Rakam dulu dalam 360 darjah, reframing kemudian menggunakan telefon pintar dengan mudah.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Feature 1 -->
+        <div class="glass-card p-6 rounded-2xl transition duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/30 text-brand-orange flex items-center justify-center text-xl mb-4">
+            <i class="fa-solid fa-plane-departure"></i>
+          </div>
+          <h4 class="text-lg font-bold text-white mb-2">Travel & Percutian</h4>
+          <p class="text-sm text-gray-400">Rakam pemandangan sekeliling dan diri anda sekaligus tanpa bantuan jurugambar luar. Kenangan holiday lebih hidup!</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="glass-card p-6 rounded-2xl transition duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/30 text-brand-orange flex items-center justify-center text-xl mb-4">
+            <i class="fa-solid fa-mountain"></i>
+          </div>
+          <h4 class="text-lg font-bold text-white mb-2">Hiking & Outdoor</h4>
+          <p class="text-sm text-gray-400">Tahan lasak, lensa diperkuat dan penstabilan imej FlowState memastikan rakaman trek curam kekal stabil seperti guna gimbal.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="glass-card p-6 rounded-2xl transition duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/30 text-brand-orange flex items-center justify-center text-xl mb-4">
+            <i class="fa-solid fa-video"></i>
+          </div>
+          <h4 class="text-lg font-bold text-white mb-2">Content Creator</h4>
+          <p class="text-sm text-gray-400">Dapatkan shot sudut 'Drone Shot' palsu dengan Invisible Selfie Stick. Sesuai untuk TikTok, Reels, dan YouTube Shorts viral.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="glass-card p-6 rounded-2xl transition duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/30 text-brand-orange flex items-center justify-center text-xl mb-4">
+            <i class="fa-solid fa-motorcycle"></i>
+          </div>
+          <h4 class="text-lg font-bold text-white mb-2">Konvoi & Motovlog</h4>
+          <p class="text-sm text-gray-400">Sudut 360 darjah menangkap reaksi rider, motosikal dan pemandangan jalan raya serentak dalam satu laluan rakaman.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- PAKEJ & HARGA JELAS                        -->
+  <!-- ========================================== -->
+  <section id="pakej" class="py-20 bg-brand-panel/40 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs sm:text-sm font-bold text-brand-orange uppercase tracking-widest">Kadar & Pakej Sewaan</h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Harga Telus Tanpa Kos Tersembunyi</h3>
+        <p class="text-gray-400 mt-4 text-sm sm:text-base">Pilih mengikut keperluan anda: sama ada untuk sesi beberapa jam ringkas atau pakej harian bercuti.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- Pakej Jam -->
+        <div class="glass-card p-8 rounded-3xl border border-white/10 flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-white/10 text-xs px-4 py-1.5 rounded-bl-xl font-bold text-gray-300">
+            FLEKSIBEL
+          </div>
+          <div>
+            <h4 class="text-2xl font-bold text-white mb-1">Sewaan Mengikut Jam</h4>
+            <p class="text-xs text-gray-400 mb-6">Sesuai untuk event singkat, test shoot atau photoshoot ringkas.</p>
+            
+            <div class="mb-6 flex items-baseline">
+              <span class="text-4xl font-extrabold text-white" id="cardHourlyPrice">RM20</span>
+              <span class="text-gray-400 ml-2 font-medium">/ jam (Minima 3 Jam)</span>
+            </div>
+
+            <ul class="space-y-3 text-sm text-gray-300 mb-8">
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-circle-check text-brand-orange"></i>
+                <span>Deposit Keselamatan: <strong class="text-white">RM30</strong> (Dipulangkan)</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-circle-check text-brand-orange"></i>
+                <span>1x Insta360 X4 Air Body + Lens Guard</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-circle-check text-brand-orange"></i>
+                <span>1x Bateri Penuh + Invisible Stick 1.14m</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-circle-check text-brand-orange"></i>
+                <span>128GB High-Speed MicroSD Card</span>
+              </li>
+              <li class="flex items-center gap-3 text-amber-300">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Penalti lewat: <strong class="underline">RM10 / setiap jam</strong></span>
+              </li>
+            </ul>
+          </div>
+
+          <a href="#booking-section" onclick="setRentalType('hourly')" class="w-full text-center bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold py-3.5 rounded-xl transition">
+            Pilih Pakej Jam
+          </a>
+        </div>
+
+        <!-- Pakej Harian (Highlight) -->
+        <div class="glass-card p-8 rounded-3xl border-2 border-brand-orange flex flex-col justify-between relative overflow-hidden neon-border">
+          <div class="absolute top-0 right-0 bg-brand-orange text-white text-xs px-4 py-1.5 rounded-bl-xl font-bold tracking-wide">
+            PALING POPULAR
+          </div>
+          <div>
+            <h4 class="text-2xl font-bold text-white mb-1">Sewaan Harian</h4>
+            <p class="text-xs text-gray-400 mb-6">Pilihan utama untuk percutian domestik, pulau, dan konvoi jarak jauh.</p>
+            
+            <div class="mb-6 flex items-baseline">
+              <span class="text-4xl font-extrabold text-white" id="cardDailyPrice">RM80</span>
+              <span class="text-gray-400 ml-2 font-medium">/ 24 Jam</span>
+            </div>
+
+            <ul class="space-y-3 text-sm text-gray-300 mb-8">
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-circle-check text-brand-orange"></i>
+                <span>Deposit Keselamatan: <strong class="text-white">RM50</strong> (Dipulangkan)</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-circle-check text-brand-orange"></i>
+                <span>1x Insta360 X4 Air + Beg Pelindung</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-circle-check text-brand-orange"></i>
+                <span><strong>2x Bateri</strong> Original + Dual Charger Hub</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-circle-check text-brand-orange"></i>
+                <span>Invisible Selfie Stick & Tripod Mount</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <i class="fa-solid fa-circle-check text-brand-orange"></i>
+                <span>Fast Card Reader (USB-C & Lightning)</span>
+              </li>
+              <li class="flex items-center gap-3 text-amber-300">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Penalti lewat: <strong class="underline">RM10 / setiap jam</strong></span>
+              </li>
+            </ul>
+          </div>
+
+          <a href="#booking-section" onclick="setRentalType('daily')" class="w-full text-center bg-brand-orange hover:bg-brand-hover text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-brand-orange/30">
+            Pilih Pakej Harian
+          </a>
+        </div>
+      </div>
+
+      <!-- Deposit Note Card -->
+      <div class="max-w-4xl mx-auto mt-8 bg-brand-dark p-4 sm:p-6 rounded-2xl border border-white/10 flex items-start gap-4 text-xs sm:text-sm text-gray-300">
+        <i class="fa-solid fa-shield-halved text-brand-orange text-xl mt-0.5"></i>
+        <div>
+          <strong class="text-white">Syarat Pemulangan Deposit:</strong> Deposit keselamatan (RM30 bagi jam, RM50 bagi harian) akan dikembalikan secara penuh dalam tempoh 1-3 jam selepas pemulangan dan pemeriksaan unit selesai tanpa sebarang kerosakan, calar pada lens, kehilangan aksesori, atau kelewatan masa.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- CARA SEWA & SEMAKAN TARIKH                 -->
+  <!-- ========================================== -->
+  <section id="cara-booking" class="py-20 bg-brand-dark border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs sm:text-sm font-bold text-brand-orange uppercase tracking-widest">Langkah Mudah</h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">4 Langkah Pantas Menyewa</h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+        <div class="p-6 glass-card rounded-2xl">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brand-orange/20 text-brand-orange font-bold text-xl flex items-center justify-center mb-4">1</div>
+          <h4 class="font-bold text-white mb-2">Pilih Slot Tarikh</h4>
+          <p class="text-xs text-gray-400">Pilih pakej jam atau hari serta tarikh mula & tamat sewaan.</p>
+        </div>
+        <div class="p-6 glass-card rounded-2xl">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brand-orange/20 text-brand-orange font-bold text-xl flex items-center justify-center mb-4">2</div>
+          <h4 class="font-bold text-white mb-2">Isi Maklumat & IC</h4>
+          <p class="text-xs text-gray-400">Lengkapkan maklumat diri, tandatangan digital & pengesahan syarat.</p>
+        </div>
+        <div class="p-6 glass-card rounded-2xl">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brand-orange/20 text-brand-orange font-bold text-xl flex items-center justify-center mb-4">3</div>
+          <h4 class="font-bold text-white mb-2">Hantar & Lock Slot</h4>
+          <p class="text-xs text-gray-400">Hantar salinan ringkasan ke WhatsApp untuk semakan dan bayaran awal.</p>
+        </div>
+        <div class="p-6 glass-card rounded-2xl">
+          <div class="w-12 h-12 mx-auto rounded-full bg-brand-orange/20 text-brand-orange font-bold text-xl flex items-center justify-center mb-4">4</div>
+          <h4 class="font-bold text-white mb-2">Self-Pickup & Rakam</h4>
+          <p class="text-xs text-gray-400">Ambil kamera di pickup point rasmi, semak unit dan mula rakam aksi!</p>
+        </div>
+      </div>
+
+      <!-- Semakan Slot Kalendar Ringkas -->
+      <div id="semak-tarikh" class="mt-16 glass-card p-6 sm:p-8 rounded-3xl border border-white/10 max-w-4xl mx-auto">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-white/10 gap-4">
+          <div>
+            <h4 class="text-xl font-bold text-white flex items-center gap-2">
+              <i class="fa-regular fa-calendar-check text-brand-orange"></i>
+              Status Ketersediaan Slot Terkini
+            </h4>
+            <p class="text-xs text-gray-400 mt-1">Sistem menyemak pertindihan masa bagi mengelakkan tempahan bertindih.</p>
+          </div>
+          <div class="flex items-center gap-4 text-xs font-medium">
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-emerald-500"></span> Available</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-amber-500"></span> Pending</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-rose-500"></span> Booked</span>
+          </div>
+        </div>
+
+        <div class="pt-6">
+          <div class="text-xs text-gray-400 mb-3 flex items-center justify-between">
+            <span>Senarai tempahan aktif minggu ini:</span>
+            <span id="backendStatusNotice" class="text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md text-[11px]">
+              <i class="fa-solid fa-cloud mr-1"></i>Firebase Live Connected
+            </span>
+          </div>
+
+          <div id="bookedSlotsContainer" class="space-y-2">
+            <!-- Populated via JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- BOOKING FORM SECTION                       -->
+  <!-- ========================================== -->
+  <section id="booking-section" class="py-20 bg-brand-panel/60 border-t border-white/5 relative">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="px-3 py-1 bg-brand-orange/20 text-brand-orange font-bold text-xs uppercase tracking-wider rounded-full">Borang Rasmi Tempahan</span>
+        <h2 class="text-3xl sm:text-4xl font-black text-white mt-3">Tempah Insta360 X4 Air Anda</h2>
+        <p class="text-gray-400 text-sm mt-2">Sila isi butiran lengkap di bawah. Tiada penghantaran disediakan (Pickup Sahaja).</p>
+      </div>
+
+      <!-- Main Form Wrapper -->
+      <form id="bookingForm" onsubmit="event.preventDefault(); handleFormReview();" class="glass-card p-6 sm:p-10 rounded-3xl border border-white/10 space-y-8">
+        
+        <!-- BAHAGIAN 1: MAKLUMAT PENYEWA -->
+        <div>
+          <h3 class="text-lg font-bold text-white flex items-center gap-2 mb-4 pb-2 border-b border-white/10">
+            <span class="w-7 h-7 rounded-lg bg-brand-orange text-white flex items-center justify-center text-xs font-bold">1</span>
+            Maklumat Pelanggan
+          </h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-gray-300 mb-1.5" for="customerName">Nama Penuh (Mengikut IC) *</label>
+              <input type="text" id="customerName" required placeholder="Contoh: Muhammad Ali bin Abu" 
+                class="w-full bg-brand-dark/90 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-orange transition">
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-gray-300 mb-1.5" for="customerPhone">Nombor Telefon (WhatsApp) *</label>
+              <input type="tel" id="customerPhone" required placeholder="Contoh: 0123456789" 
+                class="w-full bg-brand-dark/90 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-orange transition">
+            </div>
+          </div>
+        </div>
+
+        <!-- BAHAGIAN 2: PILIHAN SEWAAN & MASA -->
+        <div>
+          <h3 class="text-lg font-bold text-white flex items-center gap-2 mb-4 pb-2 border-b border-white/10">
+            <span class="w-7 h-7 rounded-lg bg-brand-orange text-white flex items-center justify-center text-xs font-bold">2</span>
+            Pakej & Tarikh Sewaan
+          </h3>
+
+          <!-- Selection Type: Jam vs Harian -->
+          <div class="grid grid-cols-2 gap-4 mb-5">
+            <label class="cursor-pointer">
+              <input type="radio" name="rentalType" value="hourly" class="peer sr-only" onchange="toggleRentalType(this.value)">
+              <div class="p-4 rounded-2xl bg-brand-dark/70 border border-white/10 text-center peer-checked:border-brand-orange peer-checked:bg-brand-orange/10 transition">
+                <i class="fa-solid fa-clock text-lg text-brand-orange mb-1 block"></i>
+                <span class="font-bold text-white text-sm block">Sewaan Mengikut Jam</span>
+                <span class="text-[11px] text-gray-400">Min 3 Jam • Deposit RM30</span>
+              </div>
+            </label>
+
+            <label class="cursor-pointer">
+              <input type="radio" name="rentalType" value="daily" checked class="peer sr-only" onchange="toggleRentalType(this.value)">
+              <div class="p-4 rounded-2xl bg-brand-dark/70 border border-white/10 text-center peer-checked:border-brand-orange peer-checked:bg-brand-orange/10 transition">
+                <i class="fa-solid fa-calendar-day text-lg text-brand-orange mb-1 block"></i>
+                <span class="font-bold text-white text-sm block">Sewaan Harian</span>
+                <span class="text-[11px] text-gray-400">Pakej 24 Jam • Deposit RM50</span>
+              </div>
+            </label>
+          </div>
+
+          <!-- Fields for Daily vs Hourly -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-gray-300 mb-1.5" for="pickupDateTime">Tarikh & Masa Ambil (Pickup) *</label>
+              <input type="datetime-local" id="pickupDateTime" required onchange="calculateRentalFees()"
+                class="w-full bg-brand-dark/90 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-orange transition">
+            </div>
+
+            <!-- Conditional End Date or Duration with Custom Tier Options -->
+            <div id="dailyDurationWrapper">
+              <div class="flex items-center justify-between mb-1.5">
+                <label class="block text-xs font-semibold text-gray-300" for="dailyDuration">Pilihan Tempoh Harian *</label>
+                <span class="text-[10px] text-brand-orange font-semibold" id="dailyDiscountNotice">Diskaun sewaan panjang disediakan</span>
+              </div>
+              <select id="dailyDuration" onchange="calculateRentalFees()" class="w-full bg-brand-dark/90 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-orange transition">
+                <!-- Dynamically populated based on Admin tier options -->
+              </select>
+            </div>
+
+            <div id="hourlyDurationWrapper" class="hidden">
+              <div class="flex items-center justify-between mb-1.5">
+                <label class="block text-xs font-semibold text-gray-300" for="hourlyDuration">Pilihan Pakej Jam *</label>
+                <span class="text-[10px] text-brand-orange font-semibold">Minima 3 jam</span>
+              </div>
+              <select id="hourlyDuration" onchange="calculateRentalFees()" class="w-full bg-brand-dark/90 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brand-orange transition">
+                <!-- Dynamically populated based on Admin tier options -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Pickup Method Notice (Self-pickup only) -->
+          <div class="mt-4 p-3.5 rounded-xl bg-brand-dark/90 border border-brand-orange/30 flex items-center justify-between text-xs">
+            <div class="flex items-center gap-2 text-gray-200">
+              <i class="fa-solid fa-person-walking-luggage text-brand-orange text-base"></i>
+              <span>Kaedah Pengambilan: <strong class="text-white">Pickup Sahaja (Tiada Penghantaran)</strong></span>
+            </div>
+            <span class="text-[11px] bg-brand-orange/20 text-brand-orange font-bold px-2 py-0.5 rounded">Self-Collect</span>
+          </div>
+          <p class="text-[11px] text-gray-400 mt-1 pl-1">Lokasi pickup rasmi akan diberikan dalam resit booking WhatsApp selepas pengesahan slot.</p>
+        </div>
+
+        <!-- BAHAGIAN 2B: PILIHAN AKSESORI & PERALATAN TAMBAHAN (ADD-ON) -->
+        <div>
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2 pb-2 border-b border-white/10 gap-1">
+            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-brand-orange text-white flex items-center justify-center text-xs font-bold">+</span>
+              Pilihan Aksesori Tambahan (Add-On)
+            </h3>
+            <span class="text-[11px] text-gray-400">Pilihan peralatan sokongan untuk pengalaman maksimum</span>
+          </div>
+          <p class="text-xs text-gray-400 mb-4">Pilih mana-mana peralatan tambahan yang diperlukan untuk aktiviti anda:</p>
+
+          <div id="addOnsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+
+        <!-- BAHAGIAN 3: RINGKASAN HARGA AUTOMATIK -->
+        <div class="bg-brand-dark/90 p-5 rounded-2xl border border-white/10 space-y-3">
+          <div class="flex justify-between text-xs text-gray-400">
+            <span>Kadar Sewaan Asas (<span id="calcRateLabel">1 Hari</span>):</span>
+            <span id="calcRentalTotal" class="font-bold text-white">RM80.00</span>
+          </div>
+          <div class="flex justify-between text-xs text-gray-400">
+            <span>Jumlah Add-On (<span id="calcAddOnsCount">0 item</span>):</span>
+            <span id="calcAddOnsTotal" class="font-bold text-brand-orange">RM0.00</span>
+          </div>
+          <div class="flex justify-between text-xs text-gray-400">
+            <span>Deposit Keselamatan (<span id="calcDepositType">Harian - Boleh Dipulangkan</span>):</span>
+            <span id="calcDepositAmount" class="font-bold text-white">RM50.00</span>
+          </div>
+          <div class="flex justify-between text-xs text-gray-400">
+            <span>Caj Penalti Lewat:</span>
+            <span class="text-amber-400 font-semibold">RM10.00 / jam lewat</span>
+          </div>
+          <div class="pt-3 border-t border-white/10 flex justify-between items-baseline">
+            <div>
+              <span class="text-sm font-bold text-white block">Jumlah Bayaran Awal:</span>
+              <span class="text-[10px] text-gray-400">(Sewa Asas + Add-on + Deposit)</span>
+            </div>
+            <span id="calcGrandTotal" class="text-2xl font-black text-brand-orange">RM130.00</span>
+          </div>
+        </div>
+
+        <!-- BAHAGIAN 4: UPLOAD GAMBAR IC (PRIVASI & VALIDASI) -->
+        <div>
+          <h3 class="text-lg font-bold text-white flex items-center gap-2 mb-2 pb-2 border-b border-white/10">
+            <span class="w-7 h-7 rounded-lg bg-brand-orange text-white flex items-center justify-center text-xs font-bold">3</span>
+            Pengesahan Kad Pengenalan (IC)
+          </h3>
+          <p class="text-xs text-gray-400 mb-4">
+            <i class="fa-solid fa-lock text-brand-orange mr-1"></i>
+            <strong>Notis Privasi:</strong> Salinan IC diperlukan semata-mata untuk tujuan rekod keselamatan penyewaan aset bernilai tinggi. Data dilindungi dan tidak dikongsi secara terbuka.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- IC Depan -->
+            <div class="border-2 border-dashed border-white/15 rounded-2xl p-4 text-center hover:border-brand-orange transition relative">
+              <label class="cursor-pointer block">
+                <i class="fa-regular fa-id-card text-2xl text-gray-400 mb-2"></i>
+                <span class="block text-xs font-bold text-white">IC Bahagian Depan *</span>
+                <span class="block text-[11px] text-gray-400 mt-1">Format: JPG, PNG (Maks 5MB)</span>
+                <input type="file" id="icFrontFile" accept="image/jpeg,image/png" required onchange="handleFilePreview(this, 'icFrontPreview')" class="hidden">
+              </label>
+              <div id="icFrontPreview" class="mt-3 hidden">
+                <img src="" alt="IC Depan Preview" class="max-h-28 mx-auto rounded-lg border border-white/20">
+                <button type="button" onclick="removeFile('icFrontFile', 'icFrontPreview')" class="text-[11px] text-rose-400 hover:underline mt-1">Padam / Tukar</button>
+              </div>
+            </div>
+
+            <!-- IC Belakang -->
+            <div class="border-2 border-dashed border-white/15 rounded-2xl p-4 text-center hover:border-brand-orange transition relative">
+              <label class="cursor-pointer block">
+                <i class="fa-regular fa-id-card text-2xl text-gray-400 mb-2"></i>
+                <span class="block text-xs font-bold text-white">IC Bahagian Belakang *</span>
+                <span class="block text-[11px] text-gray-400 mt-1">Format: JPG, PNG (Maks 5MB)</span>
+                <input type="file" id="icBackFile" accept="image/jpeg,image/png" required onchange="handleFilePreview(this, 'icBackPreview')" class="hidden">
+              </label>
+              <div id="icBackPreview" class="mt-3 hidden">
+                <img src="" alt="IC Belakang Preview" class="max-h-28 mx-auto rounded-lg border border-white/20">
+                <button type="button" onclick="removeFile('icBackFile', 'icBackPreview')" class="text-[11px] text-rose-400 hover:underline mt-1">Padam / Tukar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BAHAGIAN 5: TANDATANGAN DIGITAL (CANVAS) -->
+        <div>
+          <div class="flex items-center justify-between mb-2 pb-2 border-b border-white/10">
+            <h3 class="text-lg font-bold text-white flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-brand-orange text-white flex items-center justify-center text-xs font-bold">4</span>
+              Tandatangan Digital Pelanggan
+            </h3>
+            <button type="button" onclick="clearSignatureCanvas()" class="text-xs bg-white/10 hover:bg-white/20 px-3 py-1 rounded-lg text-gray-300 transition">
+              <i class="fa-solid fa-rotate-left mr-1"></i> Reset / Padam
+            </button>
+          </div>
+          <p class="text-xs text-gray-400 mb-3">Sila turunkan tandatangan anda di dalam kotak di bawah menggunakan jari (skrin sentuh) atau tetikus.</p>
+          
+          <div class="bg-black/90 border border-white/20 rounded-2xl p-1 overflow-hidden relative">
+            <canvas id="signaturePad" class="w-full h-36 bg-black touch-none cursor-crosshair rounded-xl"></canvas>
+            <div id="sigPlaceholder" class="pointer-events-none absolute inset-0 flex items-center justify-center text-xs text-gray-600 select-none">
+              Tandatangan Di Sini
+            </div>
+          </div>
+        </div>
+
+        <!-- BAHAGIAN 6: PERSETUJUAN PERJANJIAN -->
+        <div class="space-y-4 pt-2">
+          <div class="flex items-start gap-3 bg-brand-dark/50 p-4 rounded-xl border border-white/10">
+            <input type="checkbox" id="agreementConsent" required class="mt-1 w-4 h-4 rounded border-gray-600 text-brand-orange focus:ring-brand-orange bg-brand-dark">
+            <label for="agreementConsent" class="text-xs text-gray-300 leading-relaxed cursor-pointer">
+              Saya telah membaca, memahami dan bersetuju dengan segala <button type="button" onclick="openAgreementModal()" class="text-brand-orange font-bold underline">Surat Perjanjian Sewaan Insta360 X4 Air</button>, termasuk terma ganti rugi 100% atas kerosakan, penalti kelewatan RM10/jam, serta polisi pickup sahaja.
+            </label>
+          </div>
+        </div>
+
+        <!-- BUTANG HANTAR & REVIEW -->
+        <div class="pt-4">
+          <button type="submit" class="w-full bg-brand-orange hover:bg-brand-hover text-white font-bold py-4 rounded-2xl text-base transition duration-200 shadow-xl shadow-brand-orange/30 flex items-center justify-center gap-2">
+            <i class="fa-solid fa-clipboard-check"></i>
+            <span>Semak Ringkasan & Teruskan Tempahan</span>
+          </button>
+          <p class="text-center text-[11px] text-gray-400 mt-3">
+            Langkah seterusnya: Anda boleh menyemak semula butiran sebelum mengesahkan slot tempahan.
+          </p>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- SYARAT SEWAAN & POLISI                     -->
+  <!-- ========================================== -->
+  <section id="syarat" class="py-20 bg-brand-dark border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-xs sm:text-sm font-bold text-brand-orange uppercase tracking-widest">Polisi Rasmi</h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Syarat Sewaan & Liabiliti</h3>
+        <p class="text-gray-400 mt-4 text-sm sm:text-base">Ketelusan adalah keutamaan kami. Sila ambil maklum syarat berikut demi kelancaran kedua-dua pihak.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Syarat 1 -->
+        <div class="glass-card p-6 rounded-2xl">
+          <div class="text-brand-orange text-2xl mb-3"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+          <h4 class="text-base font-bold text-white mb-2">Deposit & Pemulangan</h4>
+          <p class="text-xs text-gray-400 leading-relaxed">Deposit keselamatan (RM30 untuk pakej jam, RM50 untuk harian) wajib dijelaskan semasa bayaran awal dan akan dipulangkan selepas aset diperiksa dalam keadaan baik.</p>
+        </div>
+
+        <!-- Syarat 2 -->
+        <div class="glass-card p-6 rounded-2xl">
+          <div class="text-amber-400 text-2xl mb-3"><i class="fa-solid fa-clock-rotate-left"></i></div>
+          <h4 class="text-base font-bold text-white mb-2">Penalti Lewat Pemulangan</h4>
+          <p class="text-xs text-gray-400 leading-relaxed">Penyewa wajib memulangkan kamera mengikut masa ditetapkan. Penalti sebanyak <strong>RM10 bagi setiap jam lewat</strong> akan ditolak terus dari deposit keselamatan.</p>
+        </div>
+
+        <!-- Syarat 3 -->
+        <div class="glass-card p-6 rounded-2xl">
+          <div class="text-rose-400 text-2xl mb-3"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <h4 class="text-base font-bold text-white mb-2">Liabiliti Kerosakan (100%)</h4>
+          <p class="text-xs text-gray-400 leading-relaxed">Sebarang calar pada kanta (lens), kemasukan air akibat penutup terbuka, kerosakan mekanikal atau kehilangan unit/aksesori ditanggung 100% oleh penyewa mengikut harga pasaran alat ganti rasmi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- FAQ ACCORDION                              -->
+  <!-- ========================================== -->
+  <section id="faq" class="py-20 bg-brand-panel/30 border-t border-white/5">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-xs sm:text-sm font-bold text-brand-orange uppercase tracking-widest">Soalan Lazim</h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Ada Sebarang Pertanyaan?</h3>
+      </div>
+
+      <div class="space-y-4">
+        <!-- FAQ 1 -->
+        <div class="glass-card rounded-2xl p-5 border border-white/10">
+          <button type="button" onclick="toggleFaq(this)" class="w-full flex items-center justify-between text-left font-bold text-white text-sm sm:text-base">
+            <span>Bolehkah kamera dihantar (delivery) ke rumah atau hotel?</span>
+            <i class="fa-solid fa-chevron-down text-brand-orange transition duration-200"></i>
+          </button>
+          <div class="hidden mt-3 text-xs sm:text-sm text-gray-400 leading-relaxed pt-2 border-t border-white/5">
+            Tidak. Kami beroperasi atas dasar <strong>Pickup Sahaja</strong> bagi memastikan penyewa dan admin dapat memeriksa keadaan fizikal lensa, fungsi rakaman dan aksesori bersama-sama sebelum diserahkan.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="glass-card rounded-2xl p-5 border border-white/10">
+          <button type="button" onclick="toggleFaq(this)" class="w-full flex items-center justify-between text-left font-bold text-white text-sm sm:text-base">
+            <span>Bagaimana cara memindahkan video ke telefon saya?</span>
+            <i class="fa-solid fa-chevron-down text-brand-orange transition duration-200"></i>
+          </button>
+          <div class="hidden mt-3 text-xs sm:text-sm text-gray-400 leading-relaxed pt-2 border-t border-white/5">
+            Sangat mudah! Pakej sewaan kami disertakan dengan Fast Card Reader (Lightning & Type-C) serta kabel pemindahan data. Anda juga boleh memuat turun terus melalui Wi-Fi kamera menggunakan aplikasi rasmi Insta360 di telefon anda.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="glass-card rounded-2xl p-5 border border-white/10">
+          <button type="button" onclick="toggleFaq(this)" class="w-full flex items-center justify-between text-left font-bold text-white text-sm sm:text-base">
+            <span>Adakah kamera ini kalis air (waterproof)?</span>
+            <i class="fa-solid fa-chevron-down text-brand-orange transition duration-200"></i>
+          </button>
+          <div class="hidden mt-3 text-xs sm:text-sm text-gray-400 leading-relaxed pt-2 border-t border-white/5">
+            Insta360 X4 mempunyai reka bentuk kalis air asas, namun untuk aktiviti diving atau snorkeling dalam laut, penyewa <strong>wajib menggunakan Dive Case khas</strong> bagi mengelakkan tekanan air laut merosakkan port bateri. Sebarang kemasukan air akibat penutup longgar adalah tanggungjawab penyewa.
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="glass-card rounded-2xl p-5 border border-white/10">
+          <button type="button" onclick="toggleFaq(this)" class="w-full flex items-center justify-between text-left font-bold text-white text-sm sm:text-base">
+            <span>Berapa lama proses pemulangan deposit?</span>
+            <i class="fa-solid fa-chevron-down text-brand-orange transition duration-200"></i>
+          </button>
+          <div class="hidden mt-3 text-xs sm:text-sm text-gray-400 leading-relaxed pt-2 border-t border-white/5">
+            Deposit keselamatan akan dikembalikan melalui pindahan bank segera (Instant Transfer) dalam tempoh 1 hingga 3 jam selepas unit dipulangkan dan selesai ujian fungsi fizikal/kanta.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================== -->
+  <!-- FOOTER                                     -->
+  <!-- ========================================== -->
+  <footer class="bg-black py-12 border-t border-white/10 text-xs text-gray-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <div class="flex items-center justify-center space-x-2 text-white font-bold text-base">
+        <span>INSTA360 X4 AIR RENTAL MALAYSIA</span>
+      </div>
+      <p class="max-w-xl mx-auto">Servis sewaan peribadi berkualiti tinggi untuk peminat fotografi aksi, content creator, dan pengembara. Semua hak cipta terpelihara © <span id="currentYear"></span>.</p>
+      <div class="flex justify-center gap-6 text-gray-400">
+        <a href="#syarat" class="hover:text-brand-orange">Terma & Syarat</a>
+        <span>•</span>
+        <a href="javascript:void(0)" onclick="openAgreementModal()" class="hover:text-brand-orange">Surat Perjanjian Digital</a>
+        <span>•</span>
+        <a href="#booking-section" class="hover:text-brand-orange">Booking Slot</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- FLOATING BOTTOM CTA (MOBILE ONLY)          -->
+  <!-- ========================================== -->
+  <div class="fixed bottom-0 left-0 right-0 z-40 p-3 bg-brand-dark/95 backdrop-blur-lg border-t border-white/10 md:hidden flex items-center justify-between gap-3">
+    <div>
+      <span class="text-[10px] text-gray-400 block">Mulai Dari</span>
+      <span class="text-base font-extrabold text-white"><span id="mobileBottomPrice">RM20</span> <span class="text-[10px] text-brand-orange">/jam</span></span>
+    </div>
+    <a href="#booking-section" class="flex-1 bg-brand-orange hover:bg-brand-hover text-white text-xs font-bold py-3 px-4 rounded-xl text-center shadow-lg shadow-brand-orange/30">
+      Tempah Sekarang
+    </a>
+    <a id="floatingWaBtn" href="https://wa.me/60196971080?text=Salam%20Admin,%20saya%20berminat%20sewa%20Insta360%20X4%20Air." target="_blank" class="w-11 h-11 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl flex items-center justify-center text-lg shadow-lg">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+
+  <!-- FLOATING WHATSAPP BUTTON (DESKTOP) -->
+  <div class="hidden md:block fixed bottom-6 right-6 z-40">
+    <a href="https://wa.me/60196971080?text=Salam%20Admin,%20saya%20ingin%20tanya%20mengenai%20sewaan%20Insta360%20X4%20Air." target="_blank" 
+      class="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-3.5 rounded-full flex items-center gap-3 shadow-2xl transition hover:scale-105 duration-200">
+      <i class="fa-brands fa-whatsapp text-2xl"></i>
+      <span class="text-sm font-bold">Tanya Admin (+60196971080)</span>
+    </a>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL: RINGKASAN & PENGESAHAN BOOKING     -->
+  <!-- ========================================== -->
+  <div id="reviewModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-brand-panel border border-white/20 rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-6 my-8">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <div>
+          <span class="text-[10px] text-brand-orange font-bold uppercase tracking-wider">Langkah Akhir</span>
+          <h3 class="text-xl font-bold text-white">Ringkasan Tempahan</h3>
+        </div>
+        <button type="button" onclick="closeReviewModal()" class="text-gray-400 hover:text-white text-xl">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs sm:text-sm">
+        <div class="bg-brand-dark/90 p-4 rounded-xl border border-white/10 space-y-2">
+          <div class="flex justify-between">
+            <span class="text-gray-400">ID Tempahan:</span>
+            <span id="revRefId" class="font-mono text-brand-orange font-bold">#X4-0000</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-400">Nama Pelanggan:</span>
+            <span id="revCustomerName" class="font-bold text-white">-</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-400">Telefon:</span>
+            <span id="revCustomerPhone" class="font-bold text-white">-</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-400">Pakej Sewaan:</span>
+            <span id="revRentalPackage" class="font-bold text-white">-</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-400">Item Add-On Dipilih:</span>
+            <span id="revAddOnsList" class="font-medium text-white text-right max-w-[65%] text-[11px]">Tiada</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-400">Tarikh & Masa Pickup:</span>
+            <span id="revPickupTime" class="font-bold text-white">-</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-400">Jangkaan Pulang:</span>
+            <span id="revReturnTime" class="font-bold text-white">-</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-400">Kaedah Ambil:</span>
+            <span class="font-bold text-emerald-400">Self-Pickup Sahaja</span>
+          </div>
+        </div>
+
+        <div class="bg-brand-dark/90 p-4 rounded-xl border border-white/10 space-y-1.5">
+          <div class="flex justify-between">
+            <span class="text-gray-400">Kadar Sewaan Asas:</span>
+            <span id="revRentalFee" class="text-white font-bold">-</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-400">Jumlah Aksesori Add-On:</span>
+            <span id="revAddOnsTotal" class="text-brand-orange font-bold">RM0.00</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-400">Deposit Keselamatan:</span>
+            <span id="revDepositFee" class="text-white font-bold">-</span>
+          </div>
+          <div class="flex justify-between text-xs text-amber-300">
+            <span>Kadar Penalti Lewat:</span>
+            <span>RM10.00 / jam</span>
+          </div>
+          <div class="pt-2 border-t border-white/10 flex justify-between text-base font-bold text-white">
+            <span>Jumlah Bayaran Awal:</span>
+            <span id="revGrandTotal" class="text-brand-orange font-black">-</span>
+          </div>
+        </div>
+
+        <div class="text-[11px] text-gray-400 bg-white/5 p-3 rounded-xl border border-white/10">
+          <i class="fa-solid fa-circle-exclamation text-brand-orange mr-1"></i>
+          Gambar IC dan tandatangan anda telah direkodkan dalam sistem. Tekan butang di bawah untuk membuka WhatsApp rasmi kami bagi pengesahan slot.
+        </div>
+      </div>
+
+      <div class="flex gap-3">
+        <button type="button" onclick="closeReviewModal()" class="w-1/3 bg-white/10 hover:bg-white/20 text-white font-semibold py-3 rounded-xl text-xs sm:text-sm transition">
+          Edit Semula
+        </button>
+        <button type="button" onclick="submitBookingToWhatsApp()" class="w-2/3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30 transition">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          <span>Hantar Booking WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL: SURAT PERJANJIAN DIGITAL (AGREEMENT)-->
+  <!-- ========================================== -->
+  <div id="agreementModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-slate-900 border border-white/20 rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-6 my-8 text-gray-200">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-white/10 no-print">
+        <div>
+          <span class="text-xs font-bold text-brand-orange uppercase">Dokumen Rasmi</span>
+          <h3 class="text-xl font-bold text-white">Surat Perjanjian Sewaan Insta360 X4 Air</h3>
+        </div>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="printAgreement()" class="bg-white/10 hover:bg-white/20 text-xs px-3 py-1.5 rounded-lg text-white font-medium flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-print"></i>
+            <span>Cetak / PDF</span>
+          </button>
+          <button type="button" onclick="closeAgreementModal()" class="text-gray-400 hover:text-white text-xl p-1">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Agreement Body (Printable Area) -->
+      <div id="printableAgreement" class="space-y-4 text-xs sm:text-sm leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
+        <div class="text-center pb-4 border-b border-gray-700">
+          <h2 class="text-lg font-bold text-white uppercase">SURAT PERJANJIAN & TERMA SEWAAN KAMERA 360°</h2>
+          <p class="text-xs text-gray-400">INSTA360 X4 AIR • SERVIS SEWAAN PERIBADI</p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-brand-orange text-sm mb-1">1. PIHAK DALAM PERJANJIAN</h4>
+          <p>Perjanjian ini dipersetujui antara pihak Penyedia Sewaan (Pemilik) dan Pelanggan (Penyewa) yang mengisi maklumat lengkap serta menandatangani dokumen digital ini.</p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-brand-orange text-sm mb-1">2. MAKLUMAT PERALATAN & AKSESORI</h4>
+          <p>Peralatan yang diserahkan merangkumi: 1x Unit Kamera Insta360 X4 Air, Penutup Lensa Khas, Bateri Original, Invisible Selfie Stick 114cm, MicroSD Card High Speed, dan Beg Perlindungan. Kesemua item diperiksa bersama sebelum penyerahan.</p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-brand-orange text-sm mb-1">3. KAEDAH PENGAMBILAN & PEMULANGAN</h4>
+          <p>Penyewaan adalah atas dasar <strong>Self-Pickup Sahaja</strong> di lokasi yang dipersetujui. Tiada penghantaran pos atau kurier dibenarkan untuk menjamin keselamatan unit.</p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-brand-orange text-sm mb-1">4. DEPOSIT KESELAMATAN & PENALTI LEWAT</h4>
+          <p>Deposit keselamatan (RM30 bagi jam, RM50 bagi harian) akan dikembalikan penuh selepas unit dipulangkan mengikut masa. Sekiranya berlaku kelewatan tanpa notis rasmi, denda sebanyak <strong>RM10 bagi setiap jam lewat</strong> akan dipotong serta-merta daripada deposit.</p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-brand-orange text-sm mb-1">5. TANGGUNGJAWAB GANTI RUGI & KEROSAKAN (100%)</h4>
+          <p class="text-gray-300">
+            Penyewa bertanggungjawab sepenuhnya (100%) ke atas apa-apa bentuk kerosakan sepanjang tempoh sewaan termasuk calar pada lensa, lensa pecah, kerosakan skrin sentuh, unit dimasuki air (water damage), kehilangan aksesori, atau kehilangan keseluruhan set kamera. Nilai pampasan dinilai berdasarkan harga rasmi pusat servis Insta360 Malaysia.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-brand-orange text-sm mb-1">6. PENGESAHAN TANDATANGAN DIGITAL</h4>
+          <p>Dengan menanda kotak persetujuan dan menghantar borang tempahan, penyewa mengesahkan maklumat kad pengenalan dan tandatangan digital yang diberikan adalah sah dan mempunyai kuat kuasa undang-undang.</p>
+        </div>
+
+        <!-- Dynamic Summary In Agreement -->
+        <div class="mt-6 p-4 rounded-xl bg-white/5 border border-white/10 text-xs space-y-1">
+          <p><strong>Status Persetujuan:</strong> Bersetuju secara elektronik</p>
+          <p><strong>Tarikh & Masa Rekod:</strong> <span id="agreementTimestamp">-</span></p>
+          <p><strong>Nama Penyewa:</strong> <span id="agreementNamePreview">-</span></p>
+          <div id="agreementSigPreviewHolder" class="pt-2 hidden">
+            <p class="text-[10px] text-gray-400">Tandatangan Penyewa:</p>
+            <img id="agreementSigImg" src="" alt="Tandatangan" class="h-14 border border-white/20 rounded bg-black/50 p-1 mt-1">
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-white/10 flex justify-end no-print">
+        <button type="button" onclick="closeAgreementModal()" class="bg-brand-orange hover:bg-brand-hover text-white text-xs font-bold px-6 py-2.5 rounded-xl transition">
+          Faham & Tutup
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL: ADMIN LOGIN (ID & PASSWORD)         -->
+  <!-- ========================================== -->
+  <div id="adminLoginModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-brand-panel border border-brand-orange/30 rounded-3xl max-w-sm w-full p-6 sm:p-8 space-y-6 shadow-2xl relative">
+      <button type="button" onclick="closeAdminLoginModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white text-lg">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="text-center space-y-2">
+        <div class="w-12 h-12 rounded-2xl bg-brand-orange/20 border border-brand-orange/40 text-brand-orange mx-auto flex items-center justify-center text-xl">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3 class="text-xl font-black text-white">Log Masuk Admin</h3>
+        <p class="text-xs text-gray-400">Akses panel pengurusan harga & tarikh booking sewaan Insta360.</p>
+      </div>
+
+      <form onsubmit="event.preventDefault(); handleAdminLogin();" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1" for="adminUsernameInput">Admin ID</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-500 text-xs">
+              <i class="fa-solid fa-user"></i>
+            </span>
+            <input type="text" id="adminUsernameInput" required placeholder="Masukkan ID Admin" 
+              class="w-full bg-brand-dark border border-white/15 rounded-xl pl-9 pr-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-orange transition">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-300 mb-1" for="adminPasswordInput">Kata Laluan</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-500 text-xs">
+              <i class="fa-solid fa-key"></i>
+            </span>
+            <input type="password" id="adminPasswordInput" required placeholder="••••••••" 
+              class="w-full bg-brand-dark border border-white/15 rounded-xl pl-9 pr-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-orange transition">
+          </div>
+        </div>
+
+        <div id="adminLoginError" class="hidden text-rose-400 text-xs bg-rose-500/10 border border-rose-500/20 p-2.5 rounded-lg flex items-center gap-2">
+          <i class="fa-solid fa-circle-exclamation"></i>
+          <span>ID atau Kata Laluan tidak sah.</span>
+        </div>
+
+        <button type="submit" class="w-full bg-brand-orange hover:bg-brand-hover text-white font-bold py-3 rounded-xl text-sm transition duration-200 shadow-lg shadow-brand-orange/30 flex items-center justify-center gap-2">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          <span>Log Masuk Panel</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODAL: ADMIN DASHBOARD (HARGA & TEMPAHAN)  -->
+  <!-- ========================================== -->
+  <div id="adminDashboardModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="bg-brand-panel border border-white/15 rounded-3xl max-w-4xl w-full p-6 sm:p-8 space-y-6 my-auto max-h-[92vh] flex flex-col shadow-2xl">
+      
+      <!-- Admin Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-white/10 gap-3 shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-brand-orange text-white flex items-center justify-center text-lg font-black shadow-md shadow-brand-orange/30">
+            <i class="fa-solid fa-sliders"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="text-lg sm:text-xl font-bold text-white">Panel Pengurusan Admin</h3>
+              <span class="text-[10px] bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 px-2 py-0.5 rounded-full font-bold">Authed: insta360</span>
+            </div>
+            <p class="text-xs text-gray-400">Kawalan langsung kadar sewaan dan semakan kalendar slot tempahan.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 self-end sm:self-auto">
+          <button type="button" onclick="adminLogout()" class="bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <span>Log Keluar</span>
+          </button>
+          <button type="button" onclick="closeAdminDashboardModal()" class="text-gray-400 hover:text-white p-2 text-xl">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="flex border-b border-white/10 gap-2 sm:gap-4 shrink-0 text-xs sm:text-sm overflow-x-auto pb-1">
+        <button type="button" id="tabBtnPricing" onclick="switchAdminTab('pricing')" 
+          class="pb-2.5 sm:pb-3 border-b-2 border-brand-orange font-bold text-white flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
+          <i class="fa-solid fa-tags text-brand-orange"></i>
+          <span>Kadar Asas & Deposit</span>
+        </button>
+        <button type="button" id="tabBtnTiers" onclick="switchAdminTab('tiers')" 
+          class="pb-2.5 sm:pb-3 border-b-2 border-transparent font-medium text-gray-400 hover:text-gray-200 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
+          <i class="fa-solid fa-layer-group text-brand-orange"></i>
+          <span>Pilihan Jam & Harian Lain</span>
+        </button>
+        <button type="button" id="tabBtnAddOns" onclick="switchAdminTab('addons')" 
+          class="pb-2.5 sm:pb-3 border-b-2 border-transparent font-medium text-gray-400 hover:text-gray-200 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
+          <i class="fa-solid fa-puzzle-piece text-brand-orange"></i>
+          <span>Pengurusan Add-On</span>
+          <span id="adminAddOnCountBadge" class="bg-brand-orange text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full">0</span>
+        </button>
+        <button type="button" id="tabBtnBookings" onclick="switchAdminTab('bookings')" 
+          class="pb-2.5 sm:pb-3 border-b-2 border-transparent font-medium text-gray-400 hover:text-gray-200 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap">
+          <i class="fa-solid fa-calendar-days text-brand-orange"></i>
+          <span>Tarikh & Status Booking</span>
+          <span id="adminBookingCountBadge" class="bg-brand-orange text-white text-[10px] font-bold px-1.5 py-0.2 rounded-full">0</span>
+        </button>
+      </div>
+
+      <!-- Scrollable Tab Content Container -->
+      <div class="overflow-y-auto pr-1 space-y-6 flex-1 text-xs sm:text-sm">
+        
+        <!-- TAB 1: EDIT HARGA SEWAAN ASAS & DEPOSIT -->
+        <div id="adminTabPricing" class="space-y-6">
+          <div class="bg-brand-dark/90 p-5 sm:p-6 rounded-2xl border border-white/10 space-y-5">
+            <div class="flex items-center justify-between pb-3 border-b border-white/10">
+              <h4 class="font-bold text-white text-sm sm:text-base flex items-center gap-2">
+                <i class="fa-solid fa-coins text-brand-orange"></i>
+                Tetapan Kadar Sewaan Asas & Deposit
+              </h4>
+              <span class="text-[11px] text-gray-400">Diselaraskan terus ke halaman tempahan.</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <!-- Kadar Sejam Asas -->
+              <div class="bg-brand-panel/60 p-4 rounded-xl border border-white/10">
+                <label class="block text-xs font-bold text-gray-200 mb-1" for="adminHourlyRate">Kadar Standard Sejam (RM / jam) *</label>
+                <div class="relative mt-1">
+                  <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-brand-orange font-bold text-sm">RM</span>
+                  <input type="number" id="adminHourlyRate" min="1" step="1" required 
+                    class="w-full bg-brand-dark border border-white/20 rounded-xl pl-12 pr-4 py-2.5 text-white font-bold text-base focus:outline-none focus:border-brand-orange">
+                </div>
+                <p class="text-[11px] text-gray-400 mt-1.5">Kadar rujukan asas untuk sewaan ikut jam.</p>
+              </div>
+
+              <!-- Kadar Harian Asas -->
+              <div class="bg-brand-panel/60 p-4 rounded-xl border border-white/10">
+                <label class="block text-xs font-bold text-gray-200 mb-1" for="adminDailyRate">Kadar Standard Harian (RM / 24 jam) *</label>
+                <div class="relative mt-1">
+                  <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-brand-orange font-bold text-sm">RM</span>
+                  <input type="number" id="adminDailyRate" min="1" step="1" required 
+                    class="w-full bg-brand-dark border border-white/20 rounded-xl pl-12 pr-4 py-2.5 text-white font-bold text-base focus:outline-none focus:border-brand-orange">
+                </div>
+                <p class="text-[11px] text-gray-400 mt-1.5">Kadar 1 hari rujukan utama.</p>
+              </div>
+
+              <!-- Deposit Jam -->
+              <div class="bg-brand-panel/60 p-4 rounded-xl border border-white/10">
+                <label class="block text-xs font-bold text-gray-200 mb-1" for="adminHourlyDeposit">Deposit Keselamatan Pakej Jam (RM) *</label>
+                <div class="relative mt-1">
+                  <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-emerald-400 font-bold text-sm">RM</span>
+                  <input type="number" id="adminHourlyDeposit" min="0" step="1" required 
+                    class="w-full bg-brand-dark border border-white/20 rounded-xl pl-12 pr-4 py-2.5 text-white font-bold text-base focus:outline-none focus:border-brand-orange">
+                </div>
+                <p class="text-[11px] text-gray-400 mt-1.5">Dipulangkan 100% jika tiada kerosakan/lewat.</p>
+              </div>
+
+              <!-- Deposit Harian -->
+              <div class="bg-brand-panel/60 p-4 rounded-xl border border-white/10">
+                <label class="block text-xs font-bold text-gray-200 mb-1" for="adminDailyDeposit">Deposit Keselamatan Pakej Harian (RM) *</label>
+                <div class="relative mt-1">
+                  <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-emerald-400 font-bold text-sm">RM</span>
+                  <input type="number" id="adminDailyDeposit" min="0" step="1" required 
+                    class="w-full bg-brand-dark border border-white/20 rounded-xl pl-12 pr-4 py-2.5 text-white font-bold text-base focus:outline-none focus:border-brand-orange">
+                </div>
+                <p class="text-[11px] text-gray-400 mt-1.5">Dipulangkan 100% selepas unit disemak.</p>
+              </div>
+            </div>
+
+            <!-- Penalti Lewat & WhatsApp No -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2 border-t border-white/10">
+              <div>
+                <label class="block text-xs font-bold text-gray-200 mb-1" for="adminLatePenalty">Denda Kelewatan Setiap Jam (RM) *</label>
+                <div class="relative mt-1">
+                  <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-amber-400 font-bold text-sm">RM</span>
+                  <input type="number" id="adminLatePenalty" min="0" step="1" required 
+                    class="w-full bg-brand-dark border border-white/20 rounded-xl pl-12 pr-4 py-2.5 text-white font-bold text-sm focus:outline-none focus:border-brand-orange">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-gray-200 mb-1" for="adminWhatsAppInput">Nombor WhatsApp Penerima Tempahan *</label>
+                <div class="relative mt-1">
+                  <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-emerald-500 font-bold text-xs"><i class="fa-brands fa-whatsapp text-sm"></i></span>
+                  <input type="text" id="adminWhatsAppInput" required 
+                    class="w-full bg-brand-dark border border-white/20 rounded-xl pl-10 pr-4 py-2.5 text-white text-sm focus:outline-none focus:border-brand-orange">
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-3 flex justify-end">
+              <button type="button" onclick="saveAdminPricing()" class="bg-brand-orange hover:bg-brand-hover text-white font-bold px-6 py-3 rounded-xl transition shadow-lg shadow-brand-orange/30 flex items-center gap-2 text-sm">
+                <i class="fa-solid fa-floppy-disk"></i>
+                <span>Simpan Kadar Asas & Deposit</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: PILIHAN LAIN-LAIN UNTUK JAM DAN HARIAN (TIERS & DISKAUN) -->
+        <div id="adminTabTiers" class="hidden space-y-6">
+          <div class="bg-brand-dark/90 p-5 rounded-2xl border border-white/10 space-y-5">
+            <div class="pb-3 border-b border-white/10">
+              <h4 class="font-bold text-white text-sm sm:text-base flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-brand-orange"></i>
+                Pilihan Lain-Lain Tempoh Sewaan (Boleh Diadjust)
+              </h4>
+              <p class="text-[11px] text-gray-400 mt-1">Anda boleh menyesuaikan harga khas / pakej promosi untuk tempoh jam dan bilangan hari berlainan (cth: diskaun 3 hari, diskaun mingguan 7 hari, dsb). Nilai ini akan dipaparkan dalam dropdown pilihan pelanggan.</p>
+            </div>
+
+            <!-- Tiers Sewaan Mengikut Jam -->
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <h5 class="text-xs font-bold text-brand-orange uppercase tracking-wider flex items-center gap-1.5">
+                  <i class="fa-solid fa-clock"></i>
+                  Pilihan Pakej Jam & Kadar Khas (RM)
+                </h5>
+                <button type="button" onclick="addNewHourlyTierRow()" class="text-[11px] bg-white/10 hover:bg-white/20 text-white px-2.5 py-1 rounded-lg transition">
+                  <i class="fa-solid fa-plus text-brand-orange mr-1"></i> Tambah Pilihan Jam
+                </button>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                  <thead>
+                    <tr class="text-gray-400 border-b border-white/10 uppercase tracking-wider text-[10px]">
+                      <th class="py-2 px-3">Tempoh (Jam)</th>
+                      <th class="py-2 px-3">Label Paparan Dropdown</th>
+                      <th class="py-2 px-3">Jumlah Harga (RM)</th>
+                      <th class="py-2 px-3 text-right">Tindakan</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminHourlyTiersBody" class="divide-y divide-white/5">
+                    <!-- Populated via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Tiers Sewaan Harian -->
+            <div class="pt-4 border-t border-white/10">
+              <div class="flex items-center justify-between mb-3">
+                <h5 class="text-xs font-bold text-brand-orange uppercase tracking-wider flex items-center gap-1.5">
+                  <i class="fa-solid fa-calendar-day"></i>
+                  Pilihan Pakej Harian & Kadar Khas (RM)
+                </h5>
+                <button type="button" onclick="addNewDailyTierRow()" class="text-[11px] bg-white/10 hover:bg-white/20 text-white px-2.5 py-1 rounded-lg transition">
+                  <i class="fa-solid fa-plus text-brand-orange mr-1"></i> Tambah Pilihan Hari
+                </button>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                  <thead>
+                    <tr class="text-gray-400 border-b border-white/10 uppercase tracking-wider text-[10px]">
+                      <th class="py-2 px-3">Tempoh (Hari)</th>
+                      <th class="py-2 px-3">Label Paparan Dropdown</th>
+                      <th class="py-2 px-3">Jumlah Harga (RM)</th>
+                      <th class="py-2 px-3 text-right">Tindakan</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminDailyTiersBody" class="divide-y divide-white/5">
+                    <!-- Populated via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="pt-3 flex justify-end">
+              <button type="button" onclick="saveAdminTiers()" class="bg-brand-orange hover:bg-brand-hover text-white font-bold px-6 py-3 rounded-xl transition shadow-lg shadow-brand-orange/30 flex items-center gap-2 text-sm">
+                <i class="fa-solid fa-floppy-disk"></i>
+                <span>Simpan Semua Pilihan Tempoh</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: PENGURUSAN ADD-ON ITEMS -->
+        <div id="adminTabAddOns" class="hidden space-y-6">
+          <div class="bg-brand-dark/90 p-5 rounded-2xl border border-white/10 space-y-5">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-white/10 gap-2">
+              <div>
+                <h4 class="font-bold text-white text-sm sm:text-base flex items-center gap-2">
+                  <i class="fa-solid fa-puzzle-piece text-brand-orange"></i>
+                  Katalog Item Add-On & Aksesori
+                </h4>
+                <p class="text-[11px] text-gray-400">Ubah harga, status aktif, atau tambah aksesori baharu untuk disewa pelanggan.</p>
+              </div>
+              <button type="button" onclick="toggleNewAddOnForm()" class="bg-white/10 hover:bg-white/20 text-white text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 self-start sm:self-auto">
+                <i class="fa-solid fa-plus text-brand-orange"></i>
+                <span>Tambah Add-On Baru</span>
+              </button>
+            </div>
+
+            <!-- Form Tambah Add-On Baru -->
+            <div id="newAddOnFormWrapper" class="hidden bg-brand-panel p-4 rounded-xl border border-brand-orange/30 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-brand-orange">Daftar Item Add-On Baharu</span>
+                <button type="button" onclick="toggleNewAddOnForm()" class="text-gray-400 hover:text-white text-xs"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <label class="block text-[11px] text-gray-300 mb-1">Nama Aksesori *</label>
+                  <input type="text" id="newAddOnName" placeholder="Cth: Suction Cup Mount Kereta" class="w-full bg-brand-dark border border-white/15 rounded-lg px-3 py-2 text-white text-xs">
+                </div>
+                <div>
+                  <label class="block text-[11px] text-gray-300 mb-1">Penerangan Ringkas</label>
+                  <input type="text" id="newAddOnDesc" placeholder="Cth: Lekat kuat pada badan kereta" class="w-full bg-brand-dark border border-white/15 rounded-lg px-3 py-2 text-white text-xs">
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                  <div>
+                    <label class="block text-[11px] text-gray-300 mb-1">Harga (RM) *</label>
+                    <input type="number" id="newAddOnPrice" min="0" step="1" placeholder="15" class="w-full bg-brand-dark border border-white/15 rounded-lg px-3 py-2 text-white text-xs">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] text-gray-300 mb-1">Kiraan *</label>
+                    <select id="newAddOnPerDay" class="w-full bg-brand-dark border border-white/15 rounded-lg px-2 py-2 text-white text-xs">
+                      <option value="true">Per Hari</option>
+                      <option value="false">Per Sewaan (Flat)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="flex justify-end">
+                <button type="button" onclick="addNewAddOnItem()" class="bg-brand-orange hover:bg-brand-hover text-white text-xs font-bold px-4 py-2 rounded-lg transition">
+                  Simpan Aksesori Ini
+                </button>
+              </div>
+            </div>
+
+            <!-- Table of Add-Ons -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr class="text-gray-400 border-b border-white/10 uppercase tracking-wider text-[10px]">
+                    <th class="py-2.5 px-3">Item & Keterangan</th>
+                    <th class="py-2.5 px-3">Harga (RM)</th>
+                    <th class="py-2.5 px-3">Kiraan Masa</th>
+                    <th class="py-2.5 px-3">Status Ketersediaan</th>
+                    <th class="py-2.5 px-3 text-right">Tindakan</th>
+                  </tr>
+                </thead>
+                <tbody id="adminAddOnsTableBody" class="divide-y divide-white/5">
+                  <!-- Populated via JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <div class="pt-3 flex justify-end">
+              <button type="button" onclick="saveAdminAddOnsTable()" class="bg-brand-orange hover:bg-brand-hover text-white font-bold px-6 py-3 rounded-xl transition shadow-lg shadow-brand-orange/30 flex items-center gap-2 text-sm">
+                <i class="fa-solid fa-floppy-disk"></i>
+                <span>Simpan Perubahan Add-On</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: SENARAI TARIKH BOOKING & KELULUSAN -->
+        <div id="adminTabBookings" class="hidden space-y-6">
+          <div class="bg-brand-dark/90 p-5 rounded-2xl border border-white/10 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-white/10 gap-2">
+              <div>
+                <h4 class="font-bold text-white text-sm sm:text-base flex items-center gap-2">
+                  <i class="fa-solid fa-calendar-check text-brand-orange"></i>
+                  Senarai Tarikh Tempahan & Status Unit
+                </h4>
+                <p class="text-[11px] text-gray-400">Tukar status untuk mengunci (lock) tarikh atau lepaskan slot jika dibatalkan.</p>
+              </div>
+              <button type="button" onclick="toggleAddBlockSlotForm()" class="bg-white/10 hover:bg-white/20 text-white text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 self-start sm:self-auto">
+                <i class="fa-solid fa-plus text-brand-orange"></i>
+                <span>Sekat Tarikh Baharu</span>
+              </button>
+            </div>
+
+            <!-- Form Sekat Tarikh Manual (Maintenance / Cuti) -->
+            <div id="addBlockSlotWrapper" class="hidden bg-brand-panel p-4 rounded-xl border border-brand-orange/30 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-brand-orange">Tambah Sekatan Slot / Tempahan Luar (Manual)</span>
+                <button type="button" onclick="toggleAddBlockSlotForm()" class="text-gray-400 hover:text-white text-xs"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <label class="block text-[11px] text-gray-300 mb-1">Nama / Nota Rujukan</label>
+                  <input type="text" id="manualSlotLabel" placeholder="Cth: Penyelenggaraan / Booking Luar" class="w-full bg-brand-dark border border-white/15 rounded-lg px-3 py-2 text-white text-xs">
+                </div>
+                <div>
+                  <label class="block text-[11px] text-gray-300 mb-1">Masa Mula</label>
+                  <input type="datetime-local" id="manualSlotStart" class="w-full bg-brand-dark border border-white/15 rounded-lg px-3 py-2 text-white text-xs">
+                </div>
+                <div>
+                  <label class="block text-[11px] text-gray-300 mb-1">Masa Tamat</label>
+                  <input type="datetime-local" id="manualSlotEnd" class="w-full bg-brand-dark border border-white/15 rounded-lg px-3 py-2 text-white text-xs">
+                </div>
+              </div>
+              <div class="flex justify-end">
+                <button type="button" onclick="saveManualBlockSlot()" class="bg-brand-orange hover:bg-brand-hover text-white text-xs font-bold px-4 py-2 rounded-lg transition">
+                  Kunci Slot Ini
+                </button>
+              </div>
+            </div>
+
+            <!-- Table of Bookings -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr class="text-gray-400 border-b border-white/10 uppercase tracking-wider text-[10px]">
+                    <th class="py-2.5 px-3">ID & Nama</th>
+                    <th class="py-2.5 px-3">Jenis Pakej</th>
+                    <th class="py-2.5 px-3">Tarikh Mula</th>
+                    <th class="py-2.5 px-3">Tarikh Pulang</th>
+                    <th class="py-2.5 px-3">Status</th>
+                    <th class="py-2.5 px-3 text-right">Tindakan</th>
+                  </tr>
+                </thead>
+                <tbody id="adminBookingsTableBody" class="divide-y divide-white/5">
+                  <!-- Populated via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast" class="fixed top-24 right-4 z-50 transform translate-x-full transition-transform duration-300 bg-brand-panel border border-brand-orange text-white text-xs sm:text-sm px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3">
+    <i id="toastIcon" class="fa-solid fa-circle-check text-brand-orange text-lg"></i>
+    <span id="toastMessage">Mesej dipaparkan</span>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- JAVASCRIPT LOGIC                           -->
+  <!-- ========================================== -->
+  <script>
+    /**
+     * =========================================================================
+     * KONFIGURASI PENTING (MUDAH DIUBAH OLEH ADMIN)
+     * =========================================================================
+     */
+    const RENTAL_CONFIG = {
+      // Maklumat Perniagaan & WhatsApp
+      adminWhatsAppNumber: "+60196971080", // Nombor WhatsApp penerima booking
+      businessName: "Insta360 X4 Air Rental MY",
+      pickupLocationName: "Pickup Point Berpusat (Akan Dimaklumkan Selepas Lock Slot)",
+
+      // Konfigurasi Harga Sebenar (Bermula Kosong / Sedia Diisi Admin)
+      hourlyRate: 0,           // RM per jam
+      minHourlyDuration: 3,     // Minima 3 jam sewaan
+      dailyRate: 0,            // RM per hari (24 Jam)
+      
+      // Konfigurasi Deposit
+      hourlyDeposit: 30,        // RM30 deposit sewaan jam
+      dailyDeposit: 50,         // RM50 deposit sewaan harian
+
+      // Konfigurasi Penalti
+      lateReturnPenaltyPerHour: 10, // RM10 setiap jam lewat
+
+      // Had Fail IC
+      maxFileSizeMB: 5
+    };
+
+    /**
+     * Pilihan Tempoh Jam & Harian (Boleh diadjust oleh admin)
+     */
+    let hourlyTiers = [];
+    let dailyTiers = [];
+
+    /**
+     * Katalog Aksesori Tambahan (Add-On Items) - Tiada demo item pratetap
+     */
+    let addOnItems = [];
+
+    /**
+     * Kredensial Pengesahan Admin
+     */
+    const ADMIN_CREDENTIALS = {
+      username: "insta360",
+      password: "Insta360@"
+    };
+
+    let isAdminLoggedIn = false;
+
+    // Senarai tempahan aktif (Disegerakkan secara terus melalui Firebase)
+    let activeBookings = [];
+
+    // State Semasa Form
+    let currentCalculation = {
+      type: 'daily',
+      hoursOrDays: 1,
+      tierLabel: "-",
+      rentalFee: 0,
+      addOnsFee: 0,
+      selectedAddOns: [],
+      depositFee: 50,
+      grandTotal: 50,
+      pickupDate: null,
+      returnDate: null,
+      refId: ""
+    };
+
+    let icFiles = {
+      front: null,
+      back: null
+    };
+
+    // Signature Canvas Context
+    let canvas, ctx;
+    let isDrawing = false;
+    let hasSigned = false;
+
+    // Inisialisasi Apabila Window Siap Dimuat
+    window.onload = function() {
+      // Tetapkan tahun semasa
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+      // Kemas kini paparan harga dari konfigurasi
+      updatePricingDisplays();
+
+      // Render Dropdowns pilihan jam & harian (Tiers)
+      populateCustomerDurationSelects();
+
+      // Render Add-on item ke dalam form tempahan
+      renderCustomerAddOns();
+
+      // Sediakan Signature Canvas
+      initSignatureCanvas();
+
+      // Paparkan senarai slot tempahan
+      renderBookedSlots();
+
+      // Tetapkan nilai lalai DateTime picker kepada tarikh esok jam 10:00 pagi
+      initDefaultPickerDate();
+
+      // Kira awal sewaan
+      calculateRentalFees();
+
+      // Muat data harga ke input admin
+      populateAdminPricingInputs();
+
+      // Sekiranya Firebase SDK sudah selesai dimuatkan, jalankan penyelarasan data
+      if (window.firebaseDb) {
+        window.initFirebaseSync();
+      }
+    };
+
+    /**
+     * Penyelarasan Realtime Dengan Firebase Realtime Database
+     */
+    window.initFirebaseSync = function() {
+      if (!window.firebaseDb || !window.firebaseOnValue || !window.firebaseRef) return;
+
+      const notice = document.getElementById('backendStatusNotice');
+      if (notice) {
+        notice.innerHTML = '<i class="fa-solid fa-cloud mr-1"></i>Firebase Realtime Connected';
+        notice.className = 'text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md text-[11px]';
+      }
+
+      // 1. Dengar rekod tempahan (bookings)
+      const bookingsRef = window.firebaseRef(window.firebaseDb, 'bookings');
+      window.firebaseOnValue(bookingsRef, (snapshot) => {
+        const data = snapshot.val();
+        activeBookings = [];
+        if (data) {
+          Object.keys(data).forEach(key => {
+            activeBookings.push({ ...data[key], firebaseKey: key });
+          });
+        }
+        renderBookedSlots();
+        if (isAdminLoggedIn) renderAdminBookings();
+      });
+
+      // 2. Dengar tetapan harga & konfigurasi (settings)
+      const settingsRef = window.firebaseRef(window.firebaseDb, 'settings');
+      window.firebaseOnValue(settingsRef, (snapshot) => {
+        const val = snapshot.val();
+        if (val) {
+          if (val.hourlyRate !== undefined) RENTAL_CONFIG.hourlyRate = Number(val.hourlyRate);
+          if (val.dailyRate !== undefined) RENTAL_CONFIG.dailyRate = Number(val.dailyRate);
+          if (val.hourlyDeposit !== undefined) RENTAL_CONFIG.hourlyDeposit = Number(val.hourlyDeposit);
+          if (val.dailyDeposit !== undefined) RENTAL_CONFIG.dailyDeposit = Number(val.dailyDeposit);
+          if (val.lateReturnPenaltyPerHour !== undefined) RENTAL_CONFIG.lateReturnPenaltyPerHour = Number(val.lateReturnPenaltyPerHour);
+          if (val.adminWhatsAppNumber) RENTAL_CONFIG.adminWhatsAppNumber = val.adminWhatsAppNumber;
+          if (Array.isArray(val.hourlyTiers)) hourlyTiers = val.hourlyTiers;
+          if (Array.isArray(val.dailyTiers)) dailyTiers = val.dailyTiers;
+          if (Array.isArray(val.addOnItems)) addOnItems = val.addOnItems;
+
+          updatePricingDisplays();
+          populateCustomerDurationSelects();
+          renderCustomerAddOns();
+          calculateRentalFees();
+          populateAdminPricingInputs();
+          if (isAdminLoggedIn) {
+            renderAdminTiers();
+            renderAdminAddOnsTable();
+          }
+        }
+      });
+    };
+
+    /**
+     * Kemas kini UI dengan konfigurasi harga
+     */
+    function updatePricingDisplays() {
+      const hDisplay = RENTAL_CONFIG.hourlyRate > 0 ? `RM${RENTAL_CONFIG.hourlyRate}` : "RM-";
+      const dDisplay = RENTAL_CONFIG.dailyRate > 0 ? `RM${RENTAL_CONFIG.dailyRate}` : "RM-";
+
+      document.getElementById('heroHourlyPriceDisplay').textContent = hDisplay;
+      document.getElementById('cardHourlyPrice').textContent = hDisplay;
+      document.getElementById('cardDailyPrice').textContent = dDisplay;
+      document.getElementById('mobileBottomPrice').textContent = hDisplay;
+    }
+
+    /**
+     * Render pilihan tempoh (Jam & Harian) ke dalam Form Pelanggan
+     */
+    function populateCustomerDurationSelects() {
+      const dailySelect = document.getElementById('dailyDuration');
+      const hourlySelect = document.getElementById('hourlyDuration');
+
+      dailySelect.innerHTML = '';
+      hourlyTiers.sort((a, b) => a.hours - b.hours);
+      dailyTiers.sort((a, b) => a.days - b.days);
+
+      if (dailyTiers.length === 0) {
+        const opt = document.createElement('option');
+        opt.value = 1;
+        opt.setAttribute('data-price', RENTAL_CONFIG.dailyRate);
+        opt.textContent = `1 Hari (24 Jam) — RM${RENTAL_CONFIG.dailyRate || 0}`;
+        dailySelect.appendChild(opt);
+      } else {
+        dailyTiers.forEach(t => {
+          const opt = document.createElement('option');
+          opt.value = t.days;
+          opt.setAttribute('data-price', t.price);
+          opt.textContent = `${t.label} — RM${t.price}`;
+          dailySelect.appendChild(opt);
+        });
+      }
+
+      hourlySelect.innerHTML = '';
+      if (hourlyTiers.length === 0) {
+        const opt = document.createElement('option');
+        opt.value = 3;
+        opt.setAttribute('data-price', (RENTAL_CONFIG.hourlyRate || 0) * 3);
+        opt.textContent = `3 Jam (Minima) — RM${(RENTAL_CONFIG.hourlyRate || 0) * 3}`;
+        hourlySelect.appendChild(opt);
+      } else {
+        hourlyTiers.forEach(t => {
+          const opt = document.createElement('option');
+          opt.value = t.hours;
+          opt.setAttribute('data-price', t.price);
+          opt.textContent = `${t.label} — RM${t.price}`;
+          hourlySelect.appendChild(opt);
+        });
+      }
+    }
+
+    /**
+     * Render Item Add-on ke dalam Form Pelanggan
+     */
+    function renderCustomerAddOns() {
+      const container = document.getElementById('addOnsContainer');
+      container.innerHTML = '';
+
+      const activeList = addOnItems.filter(item => item.active);
+      if (activeList.length === 0) {
+        container.innerHTML = '<div class="text-xs text-gray-500 py-4 col-span-2 text-center bg-brand-dark/40 rounded-xl border border-white/5">Tiada aksesori tambahan sedia ada buat masa ini.</div>';
+        return;
+      }
+
+      activeList.forEach(item => {
+        const rateLabel = item.perDay ? '/hari' : '/sewaan';
+        const card = document.createElement('label');
+        card.className = 'glass-card p-3.5 rounded-2xl border border-white/10 flex items-start gap-3 cursor-pointer hover:border-brand-orange/60 transition group select-none';
+        card.innerHTML = `
+          <input type="checkbox" value="${item.id}" onchange="calculateRentalFees()" class="addon-checkbox mt-1 w-4 h-4 rounded border-gray-600 text-brand-orange focus:ring-brand-orange bg-brand-dark cursor-pointer">
+          <div class="flex-1">
+            <div class="flex items-center justify-between gap-1">
+              <span class="font-bold text-white text-xs sm:text-sm group-hover:text-brand-orange transition flex items-center gap-1.5">
+                <i class="fa-solid ${item.icon || 'fa-plus'} text-[11px] text-brand-orange"></i>
+                ${item.name}
+              </span>
+              <span class="text-xs font-black text-white bg-white/5 border border-white/10 px-2 py-0.5 rounded-md whitespace-nowrap">
+                RM${item.price} <span class="text-[10px] text-gray-400 font-normal">${rateLabel}</span>
+              </span>
+            </div>
+            <p class="text-[11px] text-gray-400 mt-1 leading-snug">${item.desc}</p>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    /**
+     * =========================================================================
+     * MODUL ADMIN: LOGIN, KAWALAN HARGA, TIERS, ADD-ONS & TEMPAHAN
+     * =========================================================================
+     */
+    function openAdminModal() {
+      if (isAdminLoggedIn) {
+        openAdminDashboardModal();
+      } else {
+        document.getElementById('adminLoginError').classList.add('hidden');
+        document.getElementById('adminUsernameInput').value = '';
+        document.getElementById('adminPasswordInput').value = '';
+        const modal = document.getElementById('adminLoginModal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    function closeAdminLoginModal() {
+      const modal = document.getElementById('adminLoginModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function handleAdminLogin() {
+      const userVal = document.getElementById('adminUsernameInput').value.trim();
+      const pwdVal = document.getElementById('adminPasswordInput').value.trim();
+
+      if (userVal === ADMIN_CREDENTIALS.username && pwdVal === ADMIN_CREDENTIALS.password) {
+        isAdminLoggedIn = true;
+        closeAdminLoginModal();
+        showToast('Log masuk Admin berjaya!', 'info');
+        openAdminDashboardModal();
+      } else {
+        document.getElementById('adminLoginError').classList.remove('hidden');
+      }
+    }
+
+    function openAdminDashboardModal() {
+      populateAdminPricingInputs();
+      renderAdminTiers();
+      renderAdminAddOnsTable();
+      renderAdminBookings();
+      const modal = document.getElementById('adminDashboardModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeAdminDashboardModal() {
+      const modal = document.getElementById('adminDashboardModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function adminLogout() {
+      isAdminLoggedIn = false;
+      closeAdminDashboardModal();
+      showToast('Anda telah log keluar daripada panel admin.', 'info');
+    }
+
+    function switchAdminTab(tab) {
+      const tabs = {
+        pricing: document.getElementById('adminTabPricing'),
+        tiers: document.getElementById('adminTabTiers'),
+        addons: document.getElementById('adminTabAddOns'),
+        bookings: document.getElementById('adminTabBookings')
+      };
+      const btns = {
+        pricing: document.getElementById('tabBtnPricing'),
+        tiers: document.getElementById('tabBtnTiers'),
+        addons: document.getElementById('tabBtnAddOns'),
+        bookings: document.getElementById('tabBtnBookings')
+      };
+
+      Object.keys(tabs).forEach(key => {
+        if (key === tab) {
+          tabs[key].classList.remove('hidden');
+          btns[key].className = 'pb-2.5 sm:pb-3 border-b-2 border-brand-orange font-bold text-white flex items-center gap-1.5 sm:gap-2 whitespace-nowrap';
+        } else {
+          tabs[key].classList.add('hidden');
+          btns[key].className = 'pb-2.5 sm:pb-3 border-b-2 border-transparent font-medium text-gray-400 hover:text-gray-200 flex items-center gap-1.5 sm:gap-2 whitespace-nowrap';
+        }
+      });
+
+      if (tab === 'tiers') renderAdminTiers();
+      if (tab === 'addons') renderAdminAddOnsTable();
+      if (tab === 'bookings') renderAdminBookings();
+    }
+
+    function populateAdminPricingInputs() {
+      document.getElementById('adminHourlyRate').value = RENTAL_CONFIG.hourlyRate || '';
+      document.getElementById('adminDailyRate').value = RENTAL_CONFIG.dailyRate || '';
+      document.getElementById('adminHourlyDeposit').value = RENTAL_CONFIG.hourlyDeposit;
+      document.getElementById('adminDailyDeposit').value = RENTAL_CONFIG.dailyDeposit;
+      document.getElementById('adminLatePenalty').value = RENTAL_CONFIG.lateReturnPenaltyPerHour;
+      document.getElementById('adminWhatsAppInput').value = RENTAL_CONFIG.adminWhatsAppNumber;
+    }
+
+    function saveAdminPricing() {
+      const hr = parseFloat(document.getElementById('adminHourlyRate').value) || 0;
+      const dr = parseFloat(document.getElementById('adminDailyRate').value) || 0;
+      const hd = parseFloat(document.getElementById('adminHourlyDeposit').value);
+      const dd = parseFloat(document.getElementById('adminDailyDeposit').value);
+      const lp = parseFloat(document.getElementById('adminLatePenalty').value);
+      const wa = document.getElementById('adminWhatsAppInput').value.trim();
+
+      RENTAL_CONFIG.hourlyRate = hr;
+      RENTAL_CONFIG.dailyRate = dr;
+      RENTAL_CONFIG.hourlyDeposit = isNaN(hd) ? 30 : hd;
+      RENTAL_CONFIG.dailyDeposit = isNaN(dd) ? 50 : dd;
+      RENTAL_CONFIG.lateReturnPenaltyPerHour = isNaN(lp) ? 10 : lp;
+      if (wa) {
+        RENTAL_CONFIG.adminWhatsAppNumber = wa;
+        const cleanWa = wa.replace(/[^0-9]/g, '');
+        const floatWa = document.getElementById('floatingWaBtn');
+        if (floatWa) floatWa.href = `https://wa.me/${cleanWa}?text=Salam%20Admin,%20saya%20berminat%20sewa%20Insta360%20X4%20Air.`;
+      }
+
+      // Simpan ke Firebase Database jika tersedia
+      if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
+        window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/pricing'), {
+          hourlyRate: hr,
+          dailyRate: dr,
+          hourlyDeposit: RENTAL_CONFIG.hourlyDeposit,
+          dailyDeposit: RENTAL_CONFIG.dailyDeposit,
+          lateReturnPenaltyPerHour: RENTAL_CONFIG.lateReturnPenaltyPerHour,
+          adminWhatsAppNumber: RENTAL_CONFIG.adminWhatsAppNumber
+        });
+      }
+
+      updatePricingDisplays();
+      calculateRentalFees();
+
+      showToast('Kadar asas & deposit berjaya disimpan!', 'info');
+    }
+
+    /**
+     * =========================================================================
+     * PENGURUSAN TIERS (PILIHAN LAIN-LAIN JAM & HARIAN)
+     * =========================================================================
+     */
+    function renderAdminTiers() {
+      const hBody = document.getElementById('adminHourlyTiersBody');
+      const dBody = document.getElementById('adminDailyTiersBody');
+
+      hBody.innerHTML = '';
+      if (hourlyTiers.length === 0) {
+        hBody.innerHTML = `<tr><td colspan="4" class="py-3 text-center text-gray-500">Tiada pilihan jam khas. Sila klik "Tambah Pilihan Jam".</td></tr>`;
+      } else {
+        hourlyTiers.forEach((tier, index) => {
+          const tr = document.createElement('tr');
+          tr.className = 'hover:bg-white/5';
+          tr.innerHTML = `
+            <td class="py-2.5 px-3">
+              <input type="number" min="1" step="1" value="${tier.hours}" onchange="hourlyTiers[${index}].hours = parseInt(this.value, 10)" class="w-16 bg-brand-dark border border-white/20 rounded-lg px-2 py-1 text-white font-bold">
+            </td>
+            <td class="py-2.5 px-3">
+              <input type="text" value="${tier.label}" onchange="hourlyTiers[${index}].label = this.value" class="w-full bg-brand-dark border border-white/20 rounded-lg px-2 py-1 text-white">
+            </td>
+            <td class="py-2.5 px-3">
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-2 flex items-center text-brand-orange font-bold text-xs">RM</span>
+                <input type="number" min="0" step="1" value="${tier.price}" onchange="hourlyTiers[${index}].price = parseFloat(this.value)" class="w-24 bg-brand-dark border border-white/20 rounded-lg pl-8 pr-2 py-1 text-white font-bold">
+              </div>
+            </td>
+            <td class="py-2.5 px-3 text-right">
+              <button type="button" onclick="deleteHourlyTier(${index})" class="text-rose-400 hover:text-rose-300 p-1"><i class="fa-solid fa-trash-can"></i></button>
+            </td>
+          `;
+          hBody.appendChild(tr);
+        });
+      }
+
+      dBody.innerHTML = '';
+      if (dailyTiers.length === 0) {
+        dBody.innerHTML = `<tr><td colspan="4" class="py-3 text-center text-gray-500">Tiada pilihan harian khas. Sila klik "Tambah Pilihan Hari".</td></tr>`;
+      } else {
+        dailyTiers.forEach((tier, index) => {
+          const tr = document.createElement('tr');
+          tr.className = 'hover:bg-white/5';
+          tr.innerHTML = `
+            <td class="py-2.5 px-3">
+              <input type="number" min="1" step="1" value="${tier.days}" onchange="dailyTiers[${index}].days = parseInt(this.value, 10)" class="w-16 bg-brand-dark border border-white/20 rounded-lg px-2 py-1 text-white font-bold">
+            </td>
+            <td class="py-2.5 px-3">
+              <input type="text" value="${tier.label}" onchange="dailyTiers[${index}].label = this.value" class="w-full bg-brand-dark border border-white/20 rounded-lg px-2 py-1 text-white">
+            </td>
+            <td class="py-2.5 px-3">
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-2 flex items-center text-brand-orange font-bold text-xs">RM</span>
+                <input type="number" min="0" step="1" value="${tier.price}" onchange="dailyTiers[${index}].price = parseFloat(this.value)" class="w-24 bg-brand-dark border border-white/20 rounded-lg pl-8 pr-2 py-1 text-white font-bold">
+              </div>
+            </td>
+            <td class="py-2.5 px-3 text-right">
+              <button type="button" onclick="deleteDailyTier(${index})" class="text-rose-400 hover:text-rose-300 p-1"><i class="fa-solid fa-trash-can"></i></button>
+            </td>
+          `;
+          dBody.appendChild(tr);
+        });
+      }
+    }
+
+    function addNewHourlyTierRow() {
+      const nextHour = (hourlyTiers[hourlyTiers.length - 1]?.hours || 3) + 2;
+      hourlyTiers.push({
+        hours: nextHour,
+        label: `${nextHour} Jam`,
+        price: nextHour * (RENTAL_CONFIG.hourlyRate || 0)
+      });
+      renderAdminTiers();
+    }
+
+    function deleteHourlyTier(index) {
+      hourlyTiers.splice(index, 1);
+      renderAdminTiers();
+    }
+
+    function addNewDailyTierRow() {
+      const nextDay = (dailyTiers[dailyTiers.length - 1]?.days || 1) + 1;
+      dailyTiers.push({
+        days: nextDay,
+        label: `${nextDay} Hari`,
+        price: nextDay * (RENTAL_CONFIG.dailyRate || 0)
+      });
+      renderAdminTiers();
+    }
+
+    function deleteDailyTier(index) {
+      dailyTiers.splice(index, 1);
+      renderAdminTiers();
+    }
+
+    function saveAdminTiers() {
+      // Simpan ke Firebase
+      if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
+        window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/hourlyTiers'), hourlyTiers);
+        window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/dailyTiers'), dailyTiers);
+      }
+
+      populateCustomerDurationSelects();
+      calculateRentalFees();
+      showToast('Pilihan tempoh sewaan jam & harian berjaya dikemas kini!', 'info');
+    }
+
+    /**
+     * =========================================================================
+     * PENGURUSAN ADD-ON ITEMS (ADMIN)
+     * =========================================================================
+     */
+    function renderAdminAddOnsTable() {
+      const tbody = document.getElementById('adminAddOnsTableBody');
+      const badge = document.getElementById('adminAddOnCountBadge');
+      badge.textContent = addOnItems.length;
+      tbody.innerHTML = '';
+
+      if (addOnItems.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" class="py-6 text-center text-gray-500">Tiada aksesori tambahan dalam katalog. Tekan "Tambah Add-On Baru" untuk menambah item.</td></tr>`;
+        return;
+      }
+
+      addOnItems.forEach((item, index) => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-white/5';
+        tr.innerHTML = `
+          <td class="py-2.5 px-3">
+            <div class="font-bold text-white flex items-center gap-1.5">
+              <i class="fa-solid ${item.icon || 'fa-tag'} text-brand-orange text-xs"></i>
+              <input type="text" value="${item.name}" onchange="addOnItems[${index}].name = this.value" class="bg-brand-dark border border-white/10 rounded px-2 py-0.5 text-xs text-white w-full">
+            </div>
+            <input type="text" value="${item.desc}" onchange="addOnItems[${index}].desc = this.value" class="mt-1 bg-brand-dark/50 border border-white/5 rounded px-2 py-0.5 text-[11px] text-gray-400 w-full">
+          </td>
+          <td class="py-2.5 px-3">
+            <div class="relative w-24">
+              <span class="absolute inset-y-0 left-0 pl-2 flex items-center text-brand-orange font-bold text-xs">RM</span>
+              <input type="number" min="0" step="1" value="${item.price}" onchange="addOnItems[${index}].price = parseFloat(this.value) || 0" class="w-full bg-brand-dark border border-white/20 rounded-lg pl-8 pr-2 py-1 text-white font-bold">
+            </div>
+          </td>
+          <td class="py-2.5 px-3">
+            <select onchange="addOnItems[${index}].perDay = (this.value === 'true')" class="bg-brand-dark border border-white/15 rounded-lg px-2 py-1 text-white text-[11px]">
+              <option value="true" ${item.perDay ? 'selected' : ''}>Per Hari</option>
+              <option value="false" ${!item.perDay ? 'selected' : ''}>Flat (Per Sewaan)</option>
+            </select>
+          </td>
+          <td class="py-2.5 px-3">
+            <button type="button" onclick="toggleAddOnActive(${index})" class="px-2.5 py-1 rounded-full text-[10px] font-bold border transition ${item.active ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-400' : 'bg-gray-500/20 border-gray-500/30 text-gray-400'}">
+              ${item.active ? 'Aktif (Ada Stok)' : 'Tidak Aktif (Habis)'}
+            </button>
+          </td>
+          <td class="py-2.5 px-3 text-right">
+            <button type="button" onclick="deleteAddOnItem(${index})" class="text-rose-400 hover:text-rose-300 p-1" title="Padam Item">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function toggleNewAddOnForm() {
+      const el = document.getElementById('newAddOnFormWrapper');
+      el.classList.toggle('hidden');
+    }
+
+    function addNewAddOnItem() {
+      const name = document.getElementById('newAddOnName').value.trim();
+      const desc = document.getElementById('newAddOnDesc').value.trim() || 'Aksesori tambahan sewaan.';
+      const price = parseFloat(document.getElementById('newAddOnPrice').value);
+      const perDay = document.getElementById('newAddOnPerDay').value === 'true';
+
+      if (!name || isNaN(price)) {
+        showToast('Sila masukkan nama dan harga aksesori yang sah.', 'error');
+        return;
+      }
+
+      const id = 'addon-' + Date.now();
+      addOnItems.push({
+        id,
+        name,
+        desc,
+        price,
+        perDay,
+        icon: 'fa-box-open',
+        active: true
+      });
+
+      document.getElementById('newAddOnName').value = '';
+      document.getElementById('newAddOnDesc').value = '';
+      document.getElementById('newAddOnPrice').value = '';
+      toggleNewAddOnForm();
+
+      // Simpan ke Firebase
+      if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
+        window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/addOnItems'), addOnItems);
+      }
+
+      renderAdminAddOnsTable();
+      renderCustomerAddOns();
+      calculateRentalFees();
+      showToast('Aksesori baharu berjaya didaftarkan!', 'info');
+    }
+
+    function toggleAddOnActive(index) {
+      addOnItems[index].active = !addOnItems[index].active;
+      if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
+        window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/addOnItems'), addOnItems);
+      }
+      renderAdminAddOnsTable();
+      renderCustomerAddOns();
+      calculateRentalFees();
+    }
+
+    function deleteAddOnItem(index) {
+      addOnItems.splice(index, 1);
+      if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
+        window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/addOnItems'), addOnItems);
+      }
+      renderAdminAddOnsTable();
+      renderCustomerAddOns();
+      calculateRentalFees();
+      showToast('Aksesori telah dipadam.', 'info');
+    }
+
+    function saveAdminAddOnsTable() {
+      if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
+        window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/addOnItems'), addOnItems);
+      }
+      renderCustomerAddOns();
+      calculateRentalFees();
+      showToast('Katalog Add-on berjaya diselaraskan ke Firebase!', 'info');
+    }
+
+    /**
+     * =========================================================================
+     * PENGURUSAN TEMPAHAN (ADMIN)
+     * =========================================================================
+     */
+    function renderAdminBookings() {
+      const tbody = document.getElementById('adminBookingsTableBody');
+      const badge = document.getElementById('adminBookingCountBadge');
+      badge.textContent = activeBookings.length;
+      tbody.innerHTML = '';
+
+      if (activeBookings.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="py-6 text-center text-gray-500">Tiada rekod tempahan aktif buat masa ini.</td></tr>`;
+        return;
+      }
+
+      activeBookings.forEach((slot) => {
+        const start = new Date(slot.start).toLocaleString('ms-MY', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+        const end = new Date(slot.end).toLocaleString('ms-MY', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-white/5 transition';
+        tr.innerHTML = `
+          <td class="py-3 px-3">
+            <span class="font-mono text-brand-orange font-bold">#${slot.id}</span>
+            <div class="text-white font-medium">${slot.customerName || 'Penyewa'}</div>
+          </td>
+          <td class="py-3 px-3 text-gray-300 capitalize">${slot.type === 'daily' ? 'Harian' : 'Jam'}</td>
+          <td class="py-3 px-3 text-gray-300 font-mono text-[11px]">${start}</td>
+          <td class="py-3 px-3 text-gray-300 font-mono text-[11px]">${end}</td>
+          <td class="py-3 px-3">
+            <select onchange="updateBookingStatus('${slot.firebaseKey || slot.id}', this.value)" class="bg-brand-dark border border-white/10 rounded-lg px-2 py-1 text-[11px] font-semibold text-white focus:outline-none focus:border-brand-orange">
+              <option value="Available" ${slot.status === 'Available' ? 'selected' : ''}>Available</option>
+              <option value="Pending Confirmation" ${slot.status === 'Pending Confirmation' ? 'selected' : ''}>Pending</option>
+              <option value="Booked" ${slot.status === 'Booked' ? 'selected' : ''}>Booked (Kunci Slot)</option>
+              <option value="Selesai" ${slot.status === 'Selesai' ? 'selected' : ''}>Selesai</option>
+            </select>
+          </td>
+          <td class="py-3 px-3 text-right">
+            <button type="button" onclick="deleteBookingSlot('${slot.firebaseKey || slot.id}')" class="text-rose-400 hover:text-rose-300 bg-rose-500/10 hover:bg-rose-500/20 px-2.5 py-1 rounded-lg text-[11px] transition" title="Padam Tempahan">
+              <i class="fa-regular fa-trash-can"></i>
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function updateBookingStatus(keyOrId, newStatus) {
+      if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
+        window.firebaseSet(window.firebaseRef(window.firebaseDb, `bookings/${keyOrId}/status`), newStatus);
+      } else {
+        const item = activeBookings.find(b => b.id === keyOrId || b.firebaseKey === keyOrId);
+        if (item) {
+          item.status = newStatus;
+          renderBookedSlots();
+          renderAdminBookings();
+        }
+      }
+      showToast(`Status slot dikemaskini kepada: ${newStatus}`, 'info');
+    }
+
+    function deleteBookingSlot(keyOrId) {
+      if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
+        window.firebaseSet(window.firebaseRef(window.firebaseDb, `bookings/${keyOrId}`), null);
+      } else {
+        activeBookings = activeBookings.filter(b => b.id !== keyOrId && b.firebaseKey !== keyOrId);
+        renderBookedSlots();
+        renderAdminBookings();
+      }
+      showToast(`Slot telah dipadam.`, 'info');
+    }
+
+    function toggleAddBlockSlotForm() {
+      const el = document.getElementById('addBlockSlotWrapper');
+      el.classList.toggle('hidden');
+      if (!el.classList.contains('hidden')) {
+        const now = new Date();
+        now.setMinutes(0, 0, 0);
+        const end = new Date(now.getTime() + 86400000);
+        document.getElementById('manualSlotStart').value = now.toISOString().slice(0, 16);
+        document.getElementById('manualSlotEnd').value = end.toISOString().slice(0, 16);
+      }
+    }
+
+    function saveManualBlockSlot() {
+      const label = document.getElementById('manualSlotLabel').value.trim() || 'Sekatan Slot Admin';
+      const startVal = document.getElementById('manualSlotStart').value;
+      const endVal = document.getElementById('manualSlotEnd').value;
+
+      if (!startVal || !endVal) {
+        showToast('Sila tetapkan masa mula dan tamat sekatan.', 'error');
+        return;
+      }
+
+      if (new Date(startVal) >= new Date(endVal)) {
+        showToast('Masa tamat mestilah selepas masa mula.', 'error');
+        return;
+      }
+
+      const randomId = 'BLK-' + Math.floor(100 + Math.random() * 900);
+      const slotData = {
+        id: randomId,
+        customerName: label,
+        type: 'daily',
+        start: new Date(startVal).toISOString(),
+        end: new Date(endVal).toISOString(),
+        status: 'Booked'
+      };
+
+      if (window.firebaseDb && window.firebasePush && window.firebaseRef) {
+        const newRef = window.firebasePush(window.firebaseRef(window.firebaseDb, 'bookings'));
+        window.firebaseSet(newRef, slotData);
+      } else {
+        activeBookings.unshift(slotData);
+        renderBookedSlots();
+        renderAdminBookings();
+      }
+
+      toggleAddBlockSlotForm();
+      showToast(`Slot baharu #${randomId} telah dikunci!`, 'info');
+    }
+
+    /**
+     * Tetapkan tarikh default pada input
+     */
+    function initDefaultPickerDate() {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      tomorrow.setHours(10, 0, 0, 0);
+
+      const formatted = tomorrow.toISOString().slice(0, 16);
+      const input = document.getElementById('pickupDateTime');
+      input.value = formatted;
+      input.min = new Date().toISOString().slice(0, 16);
+    }
+
+    /**
+     * Tukar jenis sewaan (Hourly vs Daily)
+     */
+    function toggleRentalType(type) {
+      currentCalculation.type = type;
+      const hourlyWrapper = document.getElementById('hourlyDurationWrapper');
+      const dailyWrapper = document.getElementById('dailyDurationWrapper');
+
+      if (type === 'hourly') {
+        hourlyWrapper.classList.remove('hidden');
+        dailyWrapper.classList.add('hidden');
+      } else {
+        hourlyWrapper.classList.add('hidden');
+        dailyWrapper.classList.remove('hidden');
+      }
+      calculateRentalFees();
+    }
+
+    function setRentalType(type) {
+      const radios = document.getElementsByName('rentalType');
+      for (const radio of radios) {
+        if (radio.value === type) {
+          radio.checked = true;
+          toggleRentalType(type);
+          break;
+        }
+      }
+    }
+
+    /**
+     * Pengiraan Automatik Kos Sewaan Asas, Add-Ons & Deposit
+     */
+    function calculateRentalFees() {
+      const pickupVal = document.getElementById('pickupDateTime').value;
+      if (!pickupVal) return;
+
+      const startDate = new Date(pickupVal);
+      let endDate = new Date(pickupVal);
+      let rentalFee = 0;
+      let depositFee = 0;
+      let label = "";
+
+      if (currentCalculation.type === 'hourly') {
+        const hourlySelect = document.getElementById('hourlyDuration');
+        const hours = parseInt(hourlySelect.value, 10) || 3;
+        const selectedOpt = hourlySelect.options[hourlySelect.selectedIndex];
+        
+        if (selectedOpt && selectedOpt.getAttribute('data-price') !== null) {
+          rentalFee = parseFloat(selectedOpt.getAttribute('data-price')) || 0;
+        } else {
+          rentalFee = hours * (RENTAL_CONFIG.hourlyRate || 0);
+        }
+
+        depositFee = RENTAL_CONFIG.hourlyDeposit;
+        endDate.setHours(endDate.getHours() + hours);
+        label = `${hours} Jam`;
+        currentCalculation.hoursOrDays = hours;
+        currentCalculation.tierLabel = selectedOpt ? selectedOpt.textContent.split('—')[0].trim() : `${hours} Jam`;
+      } else {
+        const dailySelect = document.getElementById('dailyDuration');
+        const days = parseInt(dailySelect.value, 10) || 1;
+        const selectedOpt = dailySelect.options[dailySelect.selectedIndex];
+
+        if (selectedOpt && selectedOpt.getAttribute('data-price') !== null) {
+          rentalFee = parseFloat(selectedOpt.getAttribute('data-price')) || 0;
+        } else {
+          rentalFee = days * (RENTAL_CONFIG.dailyRate || 0);
+        }
+
+        depositFee = RENTAL_CONFIG.dailyDeposit;
+        endDate.setDate(endDate.getDate() + days);
+        label = `${days} Hari`;
+        currentCalculation.hoursOrDays = days;
+        currentCalculation.tierLabel = selectedOpt ? selectedOpt.textContent.split('—')[0].trim() : `${days} Hari`;
+      }
+
+      // Kira Aksesori Add-On Terpilih
+      const checkedBoxes = document.querySelectorAll('.addon-checkbox:checked');
+      let totalAddOns = 0;
+      let selectedAddOnDetails = [];
+
+      checkedBoxes.forEach(cb => {
+        const item = addOnItems.find(a => a.id === cb.value);
+        if (item) {
+          let itemCost = item.price;
+          if (currentCalculation.type === 'daily' && item.perDay) {
+            itemCost = item.price * currentCalculation.hoursOrDays;
+          }
+          totalAddOns += itemCost;
+          selectedAddOnDetails.push({
+            name: item.name,
+            cost: itemCost,
+            perDay: item.perDay
+          });
+        }
+      });
+
+      const grandTotal = rentalFee + totalAddOns + depositFee;
+
+      currentCalculation.rentalFee = rentalFee;
+      currentCalculation.addOnsFee = totalAddOns;
+      currentCalculation.selectedAddOns = selectedAddOnDetails;
+      currentCalculation.depositFee = depositFee;
+      currentCalculation.grandTotal = grandTotal;
+      currentCalculation.pickupDate = startDate;
+      currentCalculation.returnDate = endDate;
+
+      // Update UI
+      document.getElementById('calcRateLabel').textContent = label;
+      document.getElementById('calcRentalTotal').textContent = `RM${rentalFee.toFixed(2)}`;
+      document.getElementById('calcAddOnsCount').textContent = `${selectedAddOnDetails.length} item`;
+      document.getElementById('calcAddOnsTotal').textContent = `RM${totalAddOns.toFixed(2)}`;
+      document.getElementById('calcDepositAmount').textContent = `RM${depositFee.toFixed(2)}`;
+      document.getElementById('calcDepositType').textContent = currentCalculation.type === 'hourly' ? 'Pakej Jam (Dipulangkan)' : 'Pakej Harian (Dipulangkan)';
+      document.getElementById('calcGrandTotal').textContent = `RM${grandTotal.toFixed(2)}`;
+    }
+
+    /**
+     * Semakan Pertindihan Slot (Conflict Validation)
+     */
+    function checkSlotOverlap(newStart, newEnd) {
+      const startMs = new Date(newStart).getTime();
+      const endMs = new Date(newEnd).getTime();
+
+      for (const slot of activeBookings) {
+        if (slot.status === 'Available') continue;
+
+        const slotStart = new Date(slot.start).getTime();
+        const slotEnd = new Date(slot.end).getTime();
+
+        if (startMs < slotEnd && endMs > slotStart) {
+          return {
+            conflict: true,
+            conflictingSlot: slot
+          };
+        }
+      }
+
+      return { conflict: false };
+    }
+
+    /**
+     * Render Kalendar / Slot Tempahan Terkini
+     */
+    function renderBookedSlots() {
+      const container = document.getElementById('bookedSlotsContainer');
+      container.innerHTML = '';
+
+      if (activeBookings.length === 0) {
+        container.innerHTML = '<div class="text-xs text-gray-500 py-4 text-center bg-brand-dark/40 rounded-xl border border-white/5">Tiada tempahan aktif. Semua slot sedia ditempah.</div>';
+        return;
+      }
+
+      activeBookings.forEach(booking => {
+        const start = new Date(booking.start).toLocaleDateString('ms-MY', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+        const end = new Date(booking.end).toLocaleDateString('ms-MY', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+        
+        let badgeColor = 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
+        if (booking.status === 'Pending Confirmation') badgeColor = 'bg-amber-500/20 text-amber-400 border-amber-500/30';
+        if (booking.status === 'Booked') badgeColor = 'bg-rose-500/20 text-rose-400 border-rose-500/30';
+
+        const el = document.createElement('div');
+        el.className = 'flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-xl bg-brand-dark/80 border border-white/5 text-xs gap-2';
+        el.innerHTML = `
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-calendar-day text-brand-orange"></i>
+            <div>
+              <span class="font-bold text-white">${start} → ${end}</span>
+              <span class="text-gray-500 text-[11px] block">Slot ID: ${booking.id} (${booking.type === 'daily' ? 'Harian' : 'Jam'})</span>
+            </div>
+          </div>
+          <span class="px-2.5 py-1 rounded-md text-[11px] font-bold border ${badgeColor} self-start sm:self-auto">
+            ${booking.status}
+          </span>
+        `;
+        container.appendChild(el);
+      });
+    }
+
+    /**
+     * Inisialisasi Signature Pad (Canvas Touch & Mouse)
+     */
+    function initSignatureCanvas() {
+      canvas = document.getElementById('signaturePad');
+      ctx = canvas.getContext('2d');
+
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      canvas.addEventListener('mousedown', startDrawing);
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('mouseup', stopDrawing);
+      canvas.addEventListener('mouseleave', stopDrawing);
+
+      canvas.addEventListener('touchstart', handleTouchStart, { passive: false });
+      canvas.addEventListener('touchmove', handleTouchMove, { passive: false });
+      canvas.addEventListener('touchend', stopDrawing);
+    }
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+      ctx.lineWidth = 2.5;
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = '#FF5E00';
+    }
+
+    function startDrawing(e) {
+      isDrawing = true;
+      hasSigned = true;
+      document.getElementById('sigPlaceholder').classList.add('hidden');
+      ctx.beginPath();
+      ctx.moveTo(e.offsetX, e.offsetY);
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+      ctx.lineTo(e.offsetX, e.offsetY);
+      ctx.stroke();
+    }
+
+    function stopDrawing() {
+      if (isDrawing) {
+        ctx.closePath();
+        isDrawing = false;
+      }
+    }
+
+    function handleTouchStart(e) {
+      e.preventDefault();
+      const touch = e.touches[0];
+      const rect = canvas.getBoundingClientRect();
+      const x = touch.clientX - rect.left;
+      const y = touch.clientY - rect.top;
+      
+      isDrawing = true;
+      hasSigned = true;
+      document.getElementById('sigPlaceholder').classList.add('hidden');
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+    }
+
+    function handleTouchMove(e) {
+      e.preventDefault();
+      if (!isDrawing) return;
+      const touch = e.touches[0];
+      const rect = canvas.getBoundingClientRect();
+      const x = touch.clientX - rect.left;
+      const y = touch.clientY - rect.top;
+      ctx.lineTo(x, y);
+      ctx.stroke();
+    }
+
+    function clearSignatureCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      hasSigned = false;
+      document.getElementById('sigPlaceholder').classList.remove('hidden');
+    }
+
+    /**
+     * File Upload & Validasi
+     */
+    function handleFilePreview(input, previewContainerId) {
+      const file = input.files[0];
+      if (!file) return;
+
+      const maxBytes = RENTAL_CONFIG.maxFileSizeMB * 1024 * 1024;
+      if (file.size > maxBytes) {
+        showToast(`Saiz gambar melebihi ${RENTAL_CONFIG.maxFileSizeMB}MB. Sila pilih gambar yang lebih kecil.`, 'error');
+        input.value = "";
+        return;
+      }
+
+      if (!['image/jpeg', 'image/png'].includes(file.type)) {
+        showToast('Format gambar mestilah JPG atau PNG.', 'error');
+        input.value = "";
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const previewDiv = document.getElementById(previewContainerId);
+        const img = previewDiv.querySelector('img');
+        img.src = e.target.result;
+        previewDiv.classList.remove('hidden');
+
+        if (input.id === 'icFrontFile') icFiles.front = file;
+        if (input.id === 'icBackFile') icFiles.back = file;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removeFile(inputId, previewContainerId) {
+      document.getElementById(inputId).value = "";
+      const previewDiv = document.getElementById(previewContainerId);
+      previewDiv.classList.add('hidden');
+      previewDiv.querySelector('img').src = "";
+      if (inputId === 'icFrontFile') icFiles.front = null;
+      if (inputId === 'icBackFile') icFiles.back = null;
+    }
+
+    /**
+     * Semak Borang Sebelum Buka Review Modal
+     */
+    function handleFormReview() {
+      const name = document.getElementById('customerName').value.trim();
+      const phone = document.getElementById('customerPhone').value.trim();
+      const pickupTime = document.getElementById('pickupDateTime').value;
+      const consent = document.getElementById('agreementConsent').checked;
+
+      if (!name || !phone || !pickupTime) {
+        showToast('Sila lengkapkan maklumat wajib bertanda (*)', 'error');
+        return;
+      }
+
+      const phoneRegex = /^(\+?6?01)[0-46-9]-*[0-9]{7,8}$/;
+      if (!phoneRegex.test(phone.replace(/\s+/g, ''))) {
+        showToast('Sila masukkan nombor telefon Malaysia yang sah (cth: 0123456789)', 'error');
+        return;
+      }
+
+      if (!icFiles.front || !icFiles.back) {
+        showToast('Sila muat naik kedua-dua bahagian kad pengenalan (IC Depan & Belakang)', 'error');
+        return;
+      }
+
+      if (!hasSigned) {
+        showToast('Sila turunkan tandatangan digital anda di ruangan canvas.', 'error');
+        return;
+      }
+
+      if (!consent) {
+        showToast('Anda wajib bersetuju dengan syarat surat perjanjian sewaan.', 'error');
+        return;
+      }
+
+      const overlapCheck = checkSlotOverlap(currentCalculation.pickupDate, currentCalculation.returnDate);
+      if (overlapCheck.conflict) {
+        showToast(`Slot ini telah ditempah (${overlapCheck.conflictingSlot.status}). Sila pilih tarikh atau masa lain.`, 'error');
+        return;
+      }
+
+      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+      currentCalculation.refId = `#X4-${randomSuffix}`;
+
+      // Paparkan Nilai Pada Modal Review
+      document.getElementById('revRefId').textContent = currentCalculation.refId;
+      document.getElementById('revCustomerName').textContent = name;
+      document.getElementById('revCustomerPhone').textContent = phone;
+      document.getElementById('revRentalPackage').textContent = `${currentCalculation.type === 'hourly' ? 'Pakej Jam' : 'Pakej Harian'} (${currentCalculation.tierLabel})`;
+      
+      const revAddOnsEl = document.getElementById('revAddOnsList');
+      if (currentCalculation.selectedAddOns.length > 0) {
+        revAddOnsEl.innerHTML = currentCalculation.selectedAddOns.map(a => `• ${a.name} (+RM${a.cost})`).join('<br>');
+      } else {
+        revAddOnsEl.textContent = 'Tiada aksesori tambahan';
+      }
+
+      document.getElementById('revPickupTime').textContent = currentCalculation.pickupDate.toLocaleString('ms-MY', {
+        dateStyle: 'medium', timeStyle: 'short'
+      });
+      document.getElementById('revReturnTime').textContent = currentCalculation.returnDate.toLocaleString('ms-MY', {
+        dateStyle: 'medium', timeStyle: 'short'
+      });
+
+      document.getElementById('revRentalFee').textContent = `RM${currentCalculation.rentalFee.toFixed(2)}`;
+      document.getElementById('revAddOnsTotal').textContent = `RM${currentCalculation.addOnsFee.toFixed(2)}`;
+      document.getElementById('revDepositFee').textContent = `RM${currentCalculation.depositFee.toFixed(2)}`;
+      document.getElementById('revGrandTotal').textContent = `RM${currentCalculation.grandTotal.toFixed(2)}`;
+
+      const modal = document.getElementById('reviewModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeReviewModal() {
+      const modal = document.getElementById('reviewModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    /**
+     * Hantar Booking ke WhatsApp Rasmi & Simpan ke Firebase
+     */
+    function submitBookingToWhatsApp() {
+      const name = document.getElementById('customerName').value.trim();
+      const phone = document.getElementById('customerPhone').value.trim();
+      const pkgName = `${currentCalculation.type === 'hourly' ? 'Pakej Jam' : 'Pakej Harian'} (${currentCalculation.tierLabel})`;
+
+      const startStr = currentCalculation.pickupDate.toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' });
+      const endStr = currentCalculation.returnDate.toLocaleString('ms-MY', { dateStyle: 'medium', timeStyle: 'short' });
+
+      let addOnsText = "Tiada";
+      if (currentCalculation.selectedAddOns.length > 0) {
+        addOnsText = currentCalculation.selectedAddOns.map(a => `• ${a.name} (RM${a.cost})`).join('\n');
+      }
+
+      const bookingRecord = {
+        id: currentCalculation.refId.replace('#', ''),
+        customerName: name,
+        customerPhone: phone,
+        type: currentCalculation.type,
+        start: currentCalculation.pickupDate.toISOString(),
+        end: currentCalculation.returnDate.toISOString(),
+        status: "Pending Confirmation",
+        rentalFee: currentCalculation.rentalFee,
+        addOnsFee: currentCalculation.addOnsFee,
+        depositFee: currentCalculation.depositFee,
+        grandTotal: currentCalculation.grandTotal,
+        createdAt: new Date().toISOString()
+      };
+
+      // Simpan terus ke Firebase Realtime Database
+      if (window.firebaseDb && window.firebasePush && window.firebaseRef) {
+        const newBookingRef = window.firebasePush(window.firebaseRef(window.firebaseDb, 'bookings'));
+        window.firebaseSet(newBookingRef, bookingRecord);
+      } else {
+        activeBookings.unshift(bookingRecord);
+        renderBookedSlots();
+      }
+
+      const waMessage = 
+`*TEMPAHAN SEWAAN INSTA360 X4 AIR*
+━━━━━━━━━━━━━━━━━━━━
+*No. Rujukan:* ${currentCalculation.refId}
+*Nama Pelanggan:* ${name}
+*No. Telefon:* ${phone}
+
+*Pakej:* ${pkgName}
+*Tarikh/Masa Pickup:* ${startStr}
+*Tarikh/Masa Pulang:* ${endStr}
+*Kaedah Ambil:* Self-Pickup Sahaja
+
+*Aksesori Tambahan (Add-On):*
+${addOnsText}
+
+*Kadar Sewa Asas:* RM${currentCalculation.rentalFee.toFixed(2)}
+*Jumlah Add-On:* RM${currentCalculation.addOnsFee.toFixed(2)}
+*Deposit Keselamatan:* RM${currentCalculation.depositFee.toFixed(2)} (Boleh dipulangkan)
+*Penalti Lewat:* RM${RENTAL_CONFIG.lateReturnPenaltyPerHour}/jam
+*JUMLAH BAYARAN AWAL:* RM${currentCalculation.grandTotal.toFixed(2)}
+
+*Persetujuan Syarat & Surat Perjanjian:* BERSETUJU
+*Tandatangan Digital:* Direkodkan dalam sistem
+*Salinan IC:* Disahkan & sedia untuk semakan keselamatan
+
+Salam admin, saya ingin mengesahkan tempahan ini dan memohon slot dikunci. Terima kasih!`;
+
+      const cleanPhone = RENTAL_CONFIG.adminWhatsAppNumber.replace(/[^0-9]/g, '');
+      const encodedMsg = encodeURIComponent(waMessage);
+      const waUrl = `https://wa.me/${cleanPhone}?text=${encodedMsg}`;
+
+      closeReviewModal();
+      showToast('Tempahan direkodkan ke database! Membuka WhatsApp sekarang...', 'info');
+
+      setTimeout(() => {
+        window.open(waUrl, '_blank');
+      }, 600);
+    }
+
+    /**
+     * Modal Surat Perjanjian Digital
+     */
+    function openAgreementModal() {
+      const name = document.getElementById('customerName').value.trim() || 'Nama Pelanggan (Belum Diisi)';
+      document.getElementById('agreementNamePreview').textContent = name;
+      document.getElementById('agreementTimestamp').textContent = new Date().toLocaleString('ms-MY');
+
+      if (hasSigned && canvas) {
+        const sigHolder = document.getElementById('agreementSigPreviewHolder');
+        const sigImg = document.getElementById('agreementSigImg');
+        sigImg.src = canvas.toDataURL('image/png');
+        sigHolder.classList.remove('hidden');
+      }
+
+      const modal = document.getElementById('agreementModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeAgreementModal() {
+      const modal = document.getElementById('agreementModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function printAgreement() {
+      window.print();
+    }
+
+    /**
+     * FAQ Accordion Toggle
+     */
+    function toggleFaq(btn) {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('i');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        icon.classList.add('rotate-180');
+      } else {
+        content.classList.add('hidden');
+        icon.classList.remove('rotate-180');
+      }
+    }
+
+    /**
+     * Toast Notification Helper
+     */
+    function showToast(message, type = 'info') {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMessage');
+      const toastIcon = document.getElementById('toastIcon');
+
+      toastMsg.textContent = message;
+      if (type === 'error') {
+        toastIcon.className = 'fa-solid fa-triangle-exclamation text-rose-500 text-lg';
+        toast.className = 'fixed top-24 right-4 z-50 transform transition-transform duration-300 bg-brand-panel border border-rose-500 text-white text-xs sm:text-sm px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 translate-x-0';
+      } else {
+        toastIcon.className = 'fa-solid fa-circle-check text-brand-orange text-lg';
+        toast.className = 'fixed top-24 right-4 z-50 transform transition-transform duration-300 bg-brand-panel border border-brand-orange text-white text-xs sm:text-sm px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 translate-x-0';
+      }
+
+      setTimeout(() => {
+        toast.classList.add('translate-x-full');
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
