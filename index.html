@@ -1556,8 +1556,53 @@
     let isDrawing = false;
     let hasSigned = false;
 
+    // Helper: Simpan & Muat sandaran setempat (LocalStorage) agar data tidak hilang semasa refresh
+    function saveLocalBackup() {
+      try {
+        const backupData = {
+          config: RENTAL_CONFIG,
+          hourlyTiers: hourlyTiers,
+          dailyTiers: dailyTiers,
+          addOnItems: addOnItems,
+          activeBookings: activeBookings
+        };
+        localStorage.setItem('insta360_rental_data', JSON.stringify(backupData));
+      } catch (e) {
+        console.warn('LocalStorage save failed:', e);
+      }
+    }
+
+    function loadLocalBackup() {
+      try {
+        const raw = localStorage.getItem('insta360_rental_data');
+        if (raw) {
+          const data = JSON.parse(raw);
+          if (data.config) {
+            Object.assign(RENTAL_CONFIG, data.config);
+          }
+          if (Array.isArray(data.hourlyTiers) && data.hourlyTiers.length > 0) {
+            hourlyTiers = data.hourlyTiers;
+          }
+          if (Array.isArray(data.dailyTiers) && data.dailyTiers.length > 0) {
+            dailyTiers = data.dailyTiers;
+          }
+          if (Array.isArray(data.addOnItems) && data.addOnItems.length > 0) {
+            addOnItems = data.addOnItems;
+          }
+          if (Array.isArray(data.activeBookings) && data.activeBookings.length > 0 && activeBookings.length === 0) {
+            activeBookings = data.activeBookings;
+          }
+        }
+      } catch (e) {
+        console.warn('LocalStorage load failed:', e);
+      }
+    }
+
     // Inisialisasi Apabila Window Siap Dimuat
     window.onload = function() {
+      // 1. Muat data tersimpan dari storan setempat dahulu secara serta-merta
+      loadLocalBackup();
+
       // Tetapkan tahun semasa
       document.getElementById('currentYear').textContent = new Date().getFullYear();
 
@@ -1599,7 +1644,7 @@
 
       const notice = document.getElementById('backendStatusNotice');
       if (notice) {
-        notice.innerHTML = '<i class="fa-solid fa-cloud mr-1"></i>Firebase Realtime Connected';
+        notice.innerHTML = '<i class="fa-solid fa-cloud mr-1"></i>Firebase Live Connected';
         notice.className = 'text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md text-[11px]';
       }
 
@@ -1607,14 +1652,17 @@
       const bookingsRef = window.firebaseRef(window.firebaseDb, 'bookings');
       window.firebaseOnValue(bookingsRef, (snapshot) => {
         const data = snapshot.val();
-        activeBookings = [];
         if (data) {
+          activeBookings = [];
           Object.keys(data).forEach(key => {
             activeBookings.push({ ...data[key], firebaseKey: key });
           });
+          saveLocalBackup();
+          renderBookedSlots();
+          if (isAdminLoggedIn) renderAdminBookings();
         }
-        renderBookedSlots();
-        if (isAdminLoggedIn) renderAdminBookings();
+      }, (error) => {
+        console.warn("Firebase Read Bookings Error:", error);
       });
 
       // 2. Dengar tetapan harga & konfigurasi (settings)
@@ -1622,15 +1670,21 @@
       window.firebaseOnValue(settingsRef, (snapshot) => {
         const val = snapshot.val();
         if (val) {
-          if (val.hourlyRate !== undefined) RENTAL_CONFIG.hourlyRate = Number(val.hourlyRate);
-          if (val.dailyRate !== undefined) RENTAL_CONFIG.dailyRate = Number(val.dailyRate);
-          if (val.hourlyDeposit !== undefined) RENTAL_CONFIG.hourlyDeposit = Number(val.hourlyDeposit);
-          if (val.dailyDeposit !== undefined) RENTAL_CONFIG.dailyDeposit = Number(val.dailyDeposit);
-          if (val.lateReturnPenaltyPerHour !== undefined) RENTAL_CONFIG.lateReturnPenaltyPerHour = Number(val.lateReturnPenaltyPerHour);
-          if (val.adminWhatsAppNumber) RENTAL_CONFIG.adminWhatsAppNumber = val.adminWhatsAppNumber;
+          // Sokong kedua-dua format: samada val.pricing atau terus di val
+          const pricing = val.pricing || val;
+          if (pricing.hourlyRate !== undefined) RENTAL_CONFIG.hourlyRate = Number(pricing.hourlyRate);
+          if (pricing.dailyRate !== undefined) RENTAL_CONFIG.dailyRate = Number(pricing.dailyRate);
+          if (pricing.hourlyDeposit !== undefined) RENTAL_CONFIG.hourlyDeposit = Number(pricing.hourlyDeposit);
+          if (pricing.dailyDeposit !== undefined) RENTAL_CONFIG.dailyDeposit = Number(pricing.dailyDeposit);
+          if (pricing.lateReturnPenaltyPerHour !== undefined) RENTAL_CONFIG.lateReturnPenaltyPerHour = Number(pricing.lateReturnPenaltyPerHour);
+          if (pricing.adminWhatsAppNumber) RENTAL_CONFIG.adminWhatsAppNumber = pricing.adminWhatsAppNumber;
+          
           if (Array.isArray(val.hourlyTiers)) hourlyTiers = val.hourlyTiers;
           if (Array.isArray(val.dailyTiers)) dailyTiers = val.dailyTiers;
           if (Array.isArray(val.addOnItems)) addOnItems = val.addOnItems;
+
+          // Simpan ke cache tempatan supaya data sedia ada segera dipaparkan setiap kali refresh
+          saveLocalBackup();
 
           updatePricingDisplays();
           populateCustomerDurationSelects();
@@ -1642,6 +1696,8 @@
             renderAdminAddOnsTable();
           }
         }
+      }, (error) => {
+        console.warn("Firebase Read Settings Error:", error);
       });
     };
 
@@ -1857,22 +1913,34 @@
         if (floatWa) floatWa.href = `https://wa.me/${cleanWa}?text=Salam%20Admin,%20saya%20berminat%20sewa%20Insta360%20X4%20Air.`;
       }
 
-      // Simpan ke Firebase Database jika tersedia
+      // 1. Simpan segera ke storan tempatan (LocalStorage)
+      saveLocalBackup();
+
+      // 2. Simpan ke Firebase Database jika tersedia
       if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
-        window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/pricing'), {
+        const pricingPayload = {
           hourlyRate: hr,
           dailyRate: dr,
           hourlyDeposit: RENTAL_CONFIG.hourlyDeposit,
           dailyDeposit: RENTAL_CONFIG.dailyDeposit,
           lateReturnPenaltyPerHour: RENTAL_CONFIG.lateReturnPenaltyPerHour,
           adminWhatsAppNumber: RENTAL_CONFIG.adminWhatsAppNumber
-        });
+        };
+
+        window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/pricing'), pricingPayload)
+          .then(() => {
+            showToast('Kadar asas & deposit berjaya disimpan ke pelayan & database!', 'info');
+          })
+          .catch((err) => {
+            console.error("Firebase write error:", err);
+            showToast('Disimpan di pelayar! (Perhatian: Sila buka Rules Firebase kepada read/write: true jika mahu simpan ke awan)', 'info');
+          });
+      } else {
+        showToast('Kadar asas & deposit berjaya disimpan!', 'info');
       }
 
       updatePricingDisplays();
       calculateRentalFees();
-
-      showToast('Kadar asas & deposit berjaya disimpan!', 'info');
     }
 
     /**
@@ -1972,15 +2040,26 @@
     }
 
     function saveAdminTiers() {
-      // Simpan ke Firebase
+      // 1. Simpan ke LocalStorage serta-merta
+      saveLocalBackup();
+
+      // 2. Simpan ke Firebase
       if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
-        window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/hourlyTiers'), hourlyTiers);
-        window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/dailyTiers'), dailyTiers);
+        Promise.all([
+          window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/hourlyTiers'), hourlyTiers),
+          window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/dailyTiers'), dailyTiers)
+        ]).then(() => {
+          showToast('Pilihan tempoh sewaan jam & harian berjaya disimpan ke cloud!', 'info');
+        }).catch((err) => {
+          console.error("Firebase tiers error:", err);
+          showToast('Pilihan tempoh disimpan ke pelayar!', 'info');
+        });
+      } else {
+        showToast('Pilihan tempoh sewaan jam & harian berjaya dikemas kini!', 'info');
       }
 
       populateCustomerDurationSelects();
       calculateRentalFees();
-      showToast('Pilihan tempoh sewaan jam & harian berjaya dikemas kini!', 'info');
     }
 
     /**
@@ -2069,6 +2148,8 @@
       document.getElementById('newAddOnPrice').value = '';
       toggleNewAddOnForm();
 
+      saveLocalBackup();
+
       // Simpan ke Firebase
       if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
         window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/addOnItems'), addOnItems);
@@ -2082,6 +2163,7 @@
 
     function toggleAddOnActive(index) {
       addOnItems[index].active = !addOnItems[index].active;
+      saveLocalBackup();
       if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
         window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/addOnItems'), addOnItems);
       }
@@ -2092,6 +2174,7 @@
 
     function deleteAddOnItem(index) {
       addOnItems.splice(index, 1);
+      saveLocalBackup();
       if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
         window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/addOnItems'), addOnItems);
       }
@@ -2102,12 +2185,20 @@
     }
 
     function saveAdminAddOnsTable() {
+      saveLocalBackup();
       if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
-        window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/addOnItems'), addOnItems);
+        window.firebaseSet(window.firebaseRef(window.firebaseDb, 'settings/addOnItems'), addOnItems)
+          .then(() => {
+            showToast('Katalog Add-on berjaya diselaraskan ke database!', 'info');
+          })
+          .catch(() => {
+            showToast('Add-on disimpan secara lokal!', 'info');
+          });
+      } else {
+        showToast('Katalog Add-on berjaya disimpan!', 'info');
       }
       renderCustomerAddOns();
       calculateRentalFees();
-      showToast('Katalog Add-on berjaya diselaraskan ke Firebase!', 'info');
     }
 
     /**
