@@ -1012,12 +1012,16 @@
           <div>
             <div class="flex items-center gap-2">
               <h3 class="text-lg sm:text-xl font-bold text-white">Panel Pengurusan Realtime DB</h3>
-              <span class="text-[10px] bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 px-2 py-0.5 rounded-full font-bold">Cloud Connected</span>
+              <span id="adminDbStatusBadge" class="text-[10px] bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 px-2 py-0.5 rounded-full font-bold">Cloud Connected</span>
             </div>
             <p class="text-xs text-gray-400">Kemas kini di sini akan serta-merta disimpan ke Firebase Realtime Database.</p>
           </div>
         </div>
         <div class="flex items-center gap-2 self-end sm:self-auto">
+          <button type="button" onclick="testCloudConnection()" class="bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 border border-blue-500/40 text-xs px-3 py-2 rounded-xl transition flex items-center gap-1.5" title="Uji Sambungan & Rules Firebase">
+            <i class="fa-solid fa-stethoscope"></i>
+            <span>Test DB Rules</span>
+          </button>
           <button type="button" onclick="forceSyncToFirebase()" class="bg-brand-orange/20 hover:bg-brand-orange/30 text-brand-orange border border-brand-orange/40 text-xs px-3 py-2 rounded-xl transition flex items-center gap-1.5" title="Hantar data semasa ke Cloud">
             <i class="fa-solid fa-arrows-rotate"></i>
             <span>Push All to Cloud</span>
@@ -1029,6 +1033,19 @@
           <button type="button" onclick="closeAdminDashboardModal()" class="text-gray-400 hover:text-white p-2 text-xl">
             <i class="fa-solid fa-xmark"></i>
           </button>
+        </div>
+      </div>
+
+      <!-- Panduan Firebase Rules Notice -->
+      <div id="rulesNoticeBox" class="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-3 text-xs text-amber-200 flex items-start gap-2.5">
+        <i class="fa-solid fa-triangle-exclamation text-amber-400 text-sm mt-0.5 shrink-0"></i>
+        <div class="space-y-1">
+          <span class="font-bold text-amber-300">PENTING - Tetapan Firebase Rules:</span>
+          <p class="text-[11px] leading-relaxed">
+            Jika buka di telefon data masih kosong, pastikan di <strong>Firebase Console ➔ Realtime Database ➔ Rules</strong> anda telah tetapkan:
+            <code class="bg-black/60 text-emerald-400 px-1.5 py-0.5 rounded font-mono">".read": true, ".write": true</code>.
+            Jika tidak, Firebase akan sekat data dari disimpan ke awan.
+          </p>
         </div>
       </div>
 
@@ -1469,7 +1486,14 @@
     async function cloudFetchSettings() {
       try {
         const res = await fetch(`${FIREBASE_REST_URL}/settings.json`);
-        if (!res.ok) throw new Error("HTTP error " + res.status);
+        if (!res.ok) {
+          if (res.status === 401 || res.status === 403) {
+            updateCloudStatus(false, "Rules Permission Denied (401/403)");
+            showToast("Firebase Rules menyekat capaian! Sila tukar '.read': true & '.write': true di Firebase Console.", "error");
+            return;
+          }
+          throw new Error("HTTP error " + res.status);
+        }
         const val = await res.json();
         if (val) {
           const pricing = val.pricing || val;
@@ -1508,6 +1532,202 @@
           Object.keys(data).forEach(k => {
             if (data[k]) activeBookings.push({ ...data[k], firebaseKey: k });
           });
+          saveLocalBackup();
+          renderBookedSlots();
+          if (isAdminLoggedIn) renderAdminBookings();
+        }
+      } catch (err) {
+        console.warn("Could not fetch bookings via REST:", err);
+      }
+    }
+
+    async function cloudSave(path, payload) {
+      // 1. Cuba guna Firebase Modular SDK dulu
+      if (window.firebaseDb && window.firebaseSet && window.firebaseRef) {
+        try {
+          await window.firebaseSet(window.firebaseRef(window.firebaseDb, path), payload);
+          return true;
+        } catch (e) {
+          console.warn("SDK save failed, trying REST API:", e);
+        }
+      }
+
+      // 2. Direct REST API fallback (Memastikan telefon sentiasa boleh simpan)
+      try {
+        const res = await fetch(`${FIREBASE_REST_URL}/${path}.json`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) {
+          if (res.status === 401 || res.status === 403) {
+            showToast("Gagal! Firebase Rules menyekat tulisan (401 Unauthorized). Sila buka Rules kepada true di Firebase Console.", "error");
+          }
+          return false;
+        }
+        return true;
+      } catch (err) {
+        console.error("Cloud REST save error:", err);
+        return false;
+      }
+    }
+
+    // Uji sambungan rules Firebase secara pantas
+    async function testCloudConnection() {
+      showToast("Menguji kebenaran baca & tulis Firebase...", "info");
+      try {
+        const testPayload = { testTime: new Date().toISOString(), status: "ok" };
+        const res = await fetch(`${FIREBASE_REST_URL}/_rules_test.json`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(testPayload)
+        });
+
+        if (res.ok) {
+          showToast("Tahniah! Rules Firebase DIBUKA sepenuhnya (.read: true, .write: true). Semua sync berfungsi!", "info");
+          updateCloudStatus(true, "Rules Valid & Connected");
+        } else if (res.status === 401 || res.status === 403) {
+          showToast("PERINGATAN: Firebase Rules disekat (401/403 Permission Denied)! Sila tukar Rules di console kepada true.", "error");
+          updateCloudStatus(false, "Permission Denied (Rules Locked)");
+        } else {
+          showToast(`Respon Firebase: HTTP ${res.status}`, "error");
+        }
+      } catch (err) {
+        showToast("Ralat rangkaian ketika menguji Firebase: " + err.message, "error");
+      }
+    }
+
+    function updateCloudStatus(isOnline, text) {
+      const dot = document.getElementById('cloudStatusDot');
+      const label = document.getElementById('cloudStatusText');
+      const badge = document.getElementById('syncStatusLabel');
+      const adminBadge = document.getElementById('adminDbStatusBadge');
+
+      if (label) label.textContent = text;
+      if (badge) badge.textContent = text;
+      if (adminBadge) {
+        adminBadge.textContent = text;
+        adminBadge.className = isOnline 
+          ? 'text-[10px] bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 px-2 py-0.5 rounded-full font-bold'
+          : 'text-[10px] bg-rose-500/20 border border-rose-500/30 text-rose-400 px-2 py-0.5 rounded-full font-bold';
+      }
+      if (dot) {
+        dot.className = isOnline 
+          ? 'w-2.5 h-2.5 rounded-full bg-emerald-500' 
+          : 'w-2.5 h-2.5 rounded-full bg-rose-500';
+      }
+    }
+
+    // Inisialisasi Firebase Listener (SDK)
+    window.onFirebaseReady = function() {
+      updateCloudStatus(true, "Cloud Connected");
+
+      const settingsRef = window.firebaseRef(window.firebaseDb, 'settings');
+      window.firebaseOnValue(settingsRef, (snapshot) => {
+        const val = snapshot.val();
+        if (val) {
+          const pricing = val.pricing || val;
+          if (pricing.hourlyRate !== undefined) RENTAL_CONFIG.hourlyRate = Number(pricing.hourlyRate);
+          if (pricing.dailyRate !== undefined) RENTAL_CONFIG.dailyRate = Number(pricing.dailyRate);
+          if (pricing.hourlyDeposit !== undefined) RENTAL_CONFIG.hourlyDeposit = Number(pricing.hourlyDeposit);
+          if (pricing.dailyDeposit !== undefined) RENTAL_CONFIG.dailyDeposit = Number(pricing.dailyDeposit);
+          if (pricing.lateReturnPenaltyPerHour !== undefined) RENTAL_CONFIG.lateReturnPenaltyPerHour = Number(pricing.lateReturnPenaltyPerHour);
+          if (pricing.adminWhatsAppNumber) RENTAL_CONFIG.adminWhatsAppNumber = pricing.adminWhatsAppNumber;
+
+          if (Array.isArray(val.hourlyTiers)) hourlyTiers = val.hourlyTiers;
+          if (Array.isArray(val.dailyTiers)) dailyTiers = val.dailyTiers;
+          if (Array.isArray(val.addOnItems)) addOnItems = val.addOnItems;
+
+          saveLocalBackup();
+          refreshAllUI();
+        } else {
+          forceSyncToFirebase();
+        }
+      }, (err) => {
+        console.warn("SDK OnValue error (Rules mungkin disekat):", err);
+        updateCloudStatus(false, "Permission Denied");
+      });
+
+      const bookingsRef = window.firebaseRef(window.firebaseDb, 'bookings');
+      window.firebaseOnValue(bookingsRef, (snapshot) => {
+        const data = snapshot.val();
+        activeBookings = [];
+        if (data) {
+          Object.keys(data).forEach(k => {
+            if (data[k]) activeBookings.push({ ...data[k], firebaseKey: k });
+          });
+        }
+        saveLocalBackup();
+        renderBookedSlots();
+        if (isAdminLoggedIn) renderAdminBookings();
+      }, (err) => {
+        console.warn("SDK Bookings OnValue error:", err);
+      });
+    };
+
+    window.onFirebaseFallback = function() {
+      updateCloudStatus(false, "REST Mode");
+      cloudFetchSettings();
+      cloudFetchBookings();
+    };
+
+    // Tolak SEMUA konfigurasi ke Cloud
+    async function forceSyncToFirebase() {
+      showToast('Menyelaraskan data ke Firebase Cloud...', 'info');
+
+      const payload = {
+        pricing: {
+          hourlyRate: RENTAL_CONFIG.hourlyRate,
+          dailyRate: RENTAL_CONFIG.dailyRate,
+          hourlyDeposit: RENTAL_CONFIG.hourlyDeposit,
+          dailyDeposit: RENTAL_CONFIG.dailyDeposit,
+          lateReturnPenaltyPerHour: RENTAL_CONFIG.lateReturnPenaltyPerHour,
+          adminWhatsAppNumber: RENTAL_CONFIG.adminWhatsAppNumber
+        },
+        hourlyTiers: hourlyTiers,
+        dailyTiers: dailyTiers,
+        addOnItems: addOnItems,
+        updatedAt: new Date().toISOString()
+      };
+
+      const success = await cloudSave('settings', payload);
+      if (success) {
+        showToast('Semua tetapan harga & pakej berjaya dikemaskini di Cloud!', 'info');
+        updateCloudStatus(true, "Cloud Connected");
+      } else {
+        showToast('Gagal simpan ke Cloud. Sila pastikan Rules Firebase anda dibuka (".read": true, ".write": true).', 'error');
+      }
+    }
+
+    // Refresh UI
+    function refreshAllUI() {
+      updatePricingDisplays();
+      populateCustomerDurationSelects();
+      renderCustomerAddOns();
+      calculateRentalFees();
+      populateAdminPricingInputs();
+      if (isAdminLoggedIn) {
+        renderAdminTiers();
+        renderAdminAddOnsTable();
+        renderAdminBookings();
+      }
+    }
+
+    // Window Onload
+    window.addEventListener('DOMContentLoaded', () => {
+      loadLocalBackup();
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+      initDefaultPickerDate();
+      initSignatureCanvas();
+      refreshAllUI();
+      renderBookedSlots();
+
+      // Trigger Cloud sync
+      setTimeout(() => {
+        cloudFetchSettings();
+        cloudFetchBookings();
+      }, 300);
+    });
           saveLocalBackup();
           renderBookedSlots();
           if (isAdminLoggedIn) renderAdminBookings();
